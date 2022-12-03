@@ -1,0 +1,65 @@
+<div id="myCarousel " class="carousel slide" data-bs-ride="carousel" style="height: 100px;"></div>
+
+
+
+<div class="container marketing">
+  <div class="container mt-5  ">
+
+    {{!-- <div class='{{status}}' role="alert"> {{message}} </div> --}}
+
+    <form class="mx-auto" style="width: 500px;" action="/login" method="POST">
+      <!-- Email input -->
+      <div class="form-outline mb-4">
+        <input type="email" name="email" id="form2Example1" class="form-control" />
+        <label class="form-label" for="form2Example1">Email address</label>
+      </div>
+
+      <!-- Password input -->
+      <div class="form-outline mb-4">
+        <input type="password" name="password" id="form2Example2" class="form-control" autocomplete="on" />
+        <label class="form-label" for="form2Example2">Password</label>
+      </div>
+
+      <!-- Submit button -->
+      <button type="submit" class="btn btn-primary btn-block mb-4">Log in!!</button>
+
+
+    </form>
+  </div>
+  <div id="myCarousel " class="carousel slide" data-bs-ride="carousel" style="height: 300px;"></div>
+
+
+
+
+  {{#if error}}
+  <script>
+    const myTimeout = setTimeout(myGreeting, 3000);
+
+    function myGreeting() {
+      $("#toast").hide()
+    }
+  </script>
+
+  <div class="justify-content-end mt-5" id="toast" style="display: flex;">
+
+    <div class="toast fade show bg-{{status}}" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <svg class="docs-placeholder-img rounded me-2" width="20" height="10" xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+
+        </svg><strong class="me-auto"></strong><small></small>
+        <button class="btn-close" type="button" id="btn-close" data-coreui-dismiss="toast" aria-label="Close"></button>
+      </div>
+
+      {{!-- MESSAGE --}}
+      <div class="toast-body">{{message}}.</div>
+    </div>
+  </div>
+  {{/if}}
+
+  <hr class="featurette-divider">
+
+  <script src="/js/myjs.js"></script>
+
+
+</div>

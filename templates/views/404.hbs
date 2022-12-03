@@ -1,0 +1,44 @@
+
+<hr class="featurette-divider">
+   
+    
+ <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+            <div class="clearfix">
+              <h1 class="float-start display-3 me-4">404</h1>
+              <h4 class="pt-3">Χαθήκατε??</h4>
+              <img src="https://media.istockphoto.com/photos/end-of-road-picture-id537384505?k=20&m=537384505&s=612x612&w=0&h=7so1Up8mFJI9QEgWFtQ6d76fIx2nkRtL5QIoHmBItY4=" alt="">
+              <p class="text-medium-emphasis">Μεταβείτε στην <a href="/">Αρχική</a>.</p>
+            </div>
+          
+          </div>
+        </div>
+      </div>
+
+      {{#if error}}
+
+<script>
+  const myTimeout = setTimeout(myGreeting, 3000);
+
+  function myGreeting() {
+    $("#toast").hide()
+  }
+</script>
+
+<div class="justify-content-end mt-5" id="toast" style="display: flex;">
+
+  <div class="toast fade show bg-{{status}}" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <svg class="docs-placeholder-img rounded me-2" width="20" height="10" xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+
+      </svg><strong class="me-auto"></strong><small></small>
+      <button class="btn-close" type="button" data-coreui-dismiss="toast" aria-label="Close"></button>
+    </div>
+
+    {{!-- MESSAGE --}}
+    <div class="toast-body">{{message}}.</div>
+  </div>
+</div>
+{{/if}}

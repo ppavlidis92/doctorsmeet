@@ -1,0 +1,42 @@
+
+
+   
+    
+ <div class="container" style="max-width: 100%;">
+        <div class="row justify-content-center">
+          <div class="col-md-6 w-75">
+           <div class="mb-5 mt-5">
+             <h1 class="float-start display-3 me-4">404</h1>
+              <h4 class="pt-3">Χαθήκατε??</h4>
+           </div>
+              <img src="/images/stopDoc.webp" style="max-width: 100%;">
+          </div>
+        </div>
+      </div>
+
+      {{#if error}}
+
+<script>
+  const myTimeout = setTimeout(myGreeting, 3000);
+
+  function myGreeting() {
+    $("#toast").hide()
+  }
+</script>
+
+<div class="justify-content-end mt-5" id="toast" style="display: flex;">
+
+  <div class="toast fade show bg-{{status}}" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <svg class="docs-placeholder-img rounded me-2" width="20" height="10" xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+
+      </svg><strong class="me-auto"></strong><small></small>
+      <button class="btn-close" type="button" data-coreui-dismiss="toast" aria-label="Close"></button>
+    </div>
+
+    {{!-- MESSAGE --}}
+    <div class="toast-body">{{message}}.</div>
+  </div>
+</div>
+{{/if}}
