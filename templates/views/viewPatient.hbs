@@ -1,0 +1,200 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card mb-4">
+      <div class="card-header"><strong>Επεξεργασία Ασθενή </strong></div>
+
+      <div class="card-body">
+
+        {{!-- <p class="text-medium-emphasis small">Ενδεχομένος οδηγίες προς τον χρήστη που συμπληρώνει την φόρμα.</p>
+        --}}
+
+
+
+        </script>
+
+
+        <div class="example">
+
+          <!-- Form -->
+          <div class="tab-content rounded-bottom">
+            <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-789" id="UserFormEmail">
+
+
+              <form class="row g-3" action="/edit/editPatient/{{id}}" method="POST" name="myForm">
+
+
+
+                <div class="row g-3">
+
+                  <div class="col-md-4">
+                    <label class="form-label" for="validationDefault01">Όνομα</label>
+                    <input class="form-control" name="fname" type="text" placeholder="Μάριος" required=""
+                      value="{{user.fname}}">
+                  </div>
+
+                  <div class="col-md-4">
+                    <label class="form-label" for="validationDefault02">Επίθετο</label>
+                    <input class="form-control" name="lname" type="text" placeholder="Παππάς" required=""
+                      value="{{user.lname}}">
+                  </div>
+
+
+
+
+                  <div class="col-md-4">
+                    <label class="form-label" for="DateOfBirth">Ημερομηνία Γέννησεως</label>
+                    <input class="form-control" name="DateOfBirth" type="date" required=""
+                      value="{{formatTime user.DateOfBirth  'YYYY-MM-DD'}}">
+                  </div>
+
+
+
+
+
+                  <div class="col-md-4">
+                    <label class="form-label" for="streetName">Διεύθηνση</label>
+                    <input class="form-control" id="streetName" name="streetName" type="text" required=""
+                      value="{{user.Address.streetName}}">
+                  </div>
+
+                  <div class="col-md-3">
+                    <label class="form-label" for="streetNumber">Αριθμός</label>
+                    <input class="form-control" id="streetNumber" name="streetNumber" type="number" required=""
+                      value="{{user.Address.streetNumber}}">
+                  </div>
+
+                  <div class="col-md-3">
+                    <label class="form-label" for="streetZip">Τ.Κ.</label>
+                    <input class="form-control" id="streetZip" name="streetZip" type="number" required=""
+                      value="{{user.Address.streetZip}}">
+                  </div>
+
+
+                  <div class="col-md-4">
+                    <label class="form-label" for="identification">Στοιχεία Αστυνομικής Ταυτότητας</label>
+                    <input class="form-control" id="identification" name="identification" type="text" required=""
+                      value="{{user.identification}}">
+                  </div>
+
+
+
+                  <div class="col-md-4">
+                    <label class="form-label" for="AsfalistikoTameio">Ασφαλιστικό Ταμείο</label>
+                    <input class="form-control" id="AsfalistikoTameio" name="AsfalistikoTameio" type="text" required=""
+                      value="{{user.AsfalistikoTameio}}">
+                  </div>
+
+
+                  <div class="col-md-4">
+                    <label class="form-label" for="UserAmka">AMKA</label>
+                    <input class="form-control" id="UserAmka" name="UserAmka" type="number" required=""
+                      value="{{user.UserAmka}}">
+                  </div>
+
+
+
+                  <div class="col-md-4">
+                    <label class="form-label" for="validationDefaultEmail">Email</label>
+                    <div class="input-group"><span class="input-group-text" id="inputGroupPrepend2">@</span>
+                      <input class="form-control" name="email" type="email" value="{{user.email}}">
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <label class="form-label" for="validationMobile">Κινητό</label>
+                    <input class="form-control" name="mobile_number" type="number" value="{{user.mobile_number}}"
+                      required="">
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label" for="validationMobile">Σταθερό</label>
+                    <input class="form-control" name="home_number" type="number" value="{{user.home_number}}"
+                      required="">
+                  </div>
+
+
+                </div>
+
+
+                {{!-- <div class="col-12 pt-2">
+                  <button class="btn btn-primary" type="submit">Υποβολή Φόρμας</button>
+                </div> --}}
+
+
+
+                <div class="row">
+
+                  <div class="col mt-5 mb-5">
+                    <h3>Επισκέψεις</h3>
+                  </div>
+
+                  <table id="myTable" class="display custom_table text-center" style="">
+                    <thead>
+                      <tr>
+                        <th>Ημερομηνία</th>
+                        <th>Συμπτώματα</th>
+                        <th>Γνωμάτευση</th>
+                        <th>Φάρμακα</th>
+
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                      {{#each user.PatientVisit}}
+                      <tr>
+
+                        <td>{{formatTime this.dateVisit  'YYYY-MM-DD'}}</td>
+                        <td>{{this.symptoms}}</td>
+                        <td>{{this.Gnomateush}}</td>
+                        <td>{{this.Farmaka}}</td>
+                      </tr>
+
+                      {{/each}}
+                    </tbody>
+                  </table>
+
+                </div>
+
+              </form>
+            </div>
+          </div>
+          <!-- Form -->
+
+
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  {{#if error}}
+  <script>
+    const myTimeout = setTimeout(myGreeting, 3000);
+
+    function myGreeting() {
+      $("#toast").hide()
+    }
+  </script>
+
+  <div class="justify-content-end mt-5" id="toast" style="display: flex;">
+
+    <div class="toast fade show bg-{{status}}" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <svg class="docs-placeholder-img rounded me-2" width="20" height="10" xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+
+        </svg><strong class="me-auto"></strong><small></small>
+        <button class="btn-close" id="btn-close" type="button" data-coreui-dismiss="toast" aria-label="Close"></button>
+      </div>
+
+      {{!-- MESSAGE --}}
+      <div class="toast-body">{{message}}.</div>
+    </div>
+  </div>
+  {{/if}}
+
+</div>

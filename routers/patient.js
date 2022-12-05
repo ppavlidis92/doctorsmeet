@@ -455,6 +455,7 @@ router.post("/SendPatientEmailForm", verifyToken, async (req, res) => {
   let doctorAmka = getDoctor(req);
   let doctor = {}
   doctor.amka = doctorAmka
+  
 
 
   const uuid = crypto.randomUUID()
@@ -481,8 +482,11 @@ router.post("/SendPatientEmailForm", verifyToken, async (req, res) => {
       auth: {
         user: UserMail,
         pass: UserPass
-      }
-    });
+      },
+      // === add this === //
+      tls : { rejectUnauthorized: false }
+  }
+    );
 
     var mailOptions = {
       from: UserMail,
@@ -491,21 +495,21 @@ router.post("/SendPatientEmailForm", verifyToken, async (req, res) => {
       text: Text
     };
 
-    // transporter.sendMail(mailOptions, function (error, info) {
-    //   if (error) {
-    //     console.log(error);
-    //   } else {
-    //     console.log('Email sent: ' + info.response);
-    res.render("AddPatient", {
-      title: "Εισαγωγή Χρήστη",
-      error: true,
-      message: "Το Email Στάλθηκε με επιτυχία",
-      status: "success",
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log('Email sent: ' + info.response);
+        res.render("AddPatient", {
+          title: "Εισαγωγή Χρήστη",
+          error: true,
+          message: "Το Email Στάλθηκε με επιτυχία",
+          status: "success",
+        });
+      }
     });
-    //   }
-    // });
 
-    console.log(result);
+   
   })
     .catch((err) => {
       console.log(err);
@@ -545,6 +549,51 @@ router.get("/PatientsList", verifyToken, async (req, res) => {
 
 
 
+});
+
+
+
+router.get("/viewPatient/:id", verifyToken, async (req, res) => {
+
+  /**
+ * $lookup
+ * from: The target collection.
+ * localField: The local join field.
+ * foreignField: The target join field.
+ * as: The name for the results.
+ * pipeline: The pipeline to run on the joined collection.
+ * let: Optional variables to use in the pipeline field stages.
+ */
+// {
+//   from: "movies",
+//   localField: "movie_id",
+//   foreignField: "_id",
+//   as: "movie_info"
+// }
+  //let patient = await Patient.findById({ _id: req.params.id });
+ const docs=await Patient.aggregate([{
+    $lookup:
+        {
+          from: "visits",
+          localField: "UserAmka",
+          foreignField: "Amka",
+          as: "PatientVisit"
+        }
+  }]).exec()
+ 
+  let patient 
+  docs.forEach(p=> {
+  if(  p._id == req.params.id){
+      // console.log(p);
+      patient = p;
+  }
+  } )
+
+  res.render("viewPatient", {
+    title: "Προβολή Ασθενή",
+    user: patient,
+    id: req.params.id,
+  });
 });
 
 module.exports = router;

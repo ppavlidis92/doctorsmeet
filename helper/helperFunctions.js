@@ -73,16 +73,16 @@ const getDoctorFullName = async (req) => {
 
 
 const getDoctorWithMail = async (url) => {
-  
-  let email= await Email.find({UrlId:url}).lean()
 
-  if (email){
-  
+  let email = await Email.find({ UrlId: url }).lean()
+
+  if (email) {
+
     return email[0].doctor.amka
-  }else{
+  } else {
     return null
   }
-  
+
 };
 
 const getDoctor = (req) => {
@@ -129,6 +129,15 @@ const getMyMail = (req) => {
   }
   return email;
 };
+
+
+const getAgesCount = (patients, ageGroup) => {
+
+  const patientsCount = patients.filter(patient => patient.age_group == ageGroup)
+
+  return (patientsCount.length > 0) ? patientsCount.length : 0;
+};
+
 //name the functions you export
 module.exports = {
   RedirectAuthUser,
@@ -136,5 +145,6 @@ module.exports = {
   getGreeceTimeOneYear,
   getDoctor,
   getMyMail,
-  getDoctorFullName, getDoctorWithMail
+  getDoctorFullName, getDoctorWithMail,
+  getAgesCount
 };

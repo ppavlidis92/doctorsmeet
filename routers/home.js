@@ -5,15 +5,33 @@ const mongoose = require("mongoose");
 const async = require("hbs/lib/async");
 const verifyToken = require("../helper/validate-token");
 var User = require("../models/users");
+var Patient = require("../models/patient");
 const bcrypt = require("bcrypt");
 
-const { getMyMail } = require("../helper/helperFunctions");
+const { getMyMail,getAgesCount } = require("../helper/helperFunctions");
 
 router.use(bodyParser.urlencoded({ extended: true }));
 
 router.get("/", verifyToken, async (req, res) => {
+  let users = await User.find({}).lean();
+  let patient = await Patient.find({}).lean();
+  let Group18to25 = getAgesCount(patient,'18-25')
+  let Group25to40 = getAgesCount(patient,'25-40')
+  let Group40to65 = getAgesCount(patient,'40-65')
+  let GroupOver65 = getAgesCount(patient,'65+')
+  console.log(Group18to25);
+  console.log(Group25to40);
+  console.log(Group40to65);
+  console.log(GroupOver65);
+
   res.render("home", {
     title: "Αρχική",
+    users : users.length,
+    patients:patient.length,
+    Group18to25,
+    Group25to40,
+    Group40to65,
+    GroupOver65
     //signup:true
   });
 });
