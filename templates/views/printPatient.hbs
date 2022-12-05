@@ -1,0 +1,1516 @@
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+  $(document).ready(function () {
+    var a = window.location.href
+    var id = a.substring(a.lastIndexOf('/') + 1);
+
+
+
+
+
+    // $('#historyCheckd')
+
+    axios({
+      method: 'post',
+      url: window.location.origin + '/edit/getPatient/' + id,
+      //params: {
+      //     :id
+      // }
+    }).then((response) => {
+
+      if (response) {
+
+        let data = response.data[0]
+
+        $('#fname').text(data.fname+" "+data.lname)
+
+        $('#fatherAge').text(data.familyTable[0].member_age)
+        $('#fatherHealth').text(data.familyTable[0].health_state)
+        $('#fatherAgeDeath').text(data.familyTable[0].member_age_death)
+        $('#fatherReasonDeath').text(data.familyTable[0].member_death_reason)
+
+        $('#motherAge').text(data.familyTable[1].member_age)
+        $('#motherHealth').text(data.familyTable[1].health_state)
+        $('#motherAgeDeath').text(data.familyTable[1].member_age_death)
+        $('#motherReasonDeath').text(data.familyTable[1].member_death_reason)
+
+        $('#brotherAge').val(data.familyTable[2].member_age)
+        $('#brotherHealth').val(data.familyTable[2].health_state)
+        $('#brotherAgeDeath').val(data.familyTable[2].member_age_death)
+        $('#brotherReasonDeath').val(data.familyTable[2].member_death_reason)
+
+        $('#sisterAge').val(data.familyTable[3].member_age)
+        $('#sisterHealth').val(data.familyTable[3].health_state)
+        $('#sisterAgeDeath').val(data.familyTable[3].member_age_death)
+        $('#sisterReasonDeath').val(data.familyTable[3].member_death_reason)
+
+        $('#wifeAge').val(data.familyTable[4].member_age)
+        $('#wifeHealth').val(data.familyTable[4].health_state)
+        $('#wifeAgeDeath').val(data.familyTable[4].member_age_death)
+        $('#wifeReasonDeath').val(data.familyTable[4].member_death_reason)
+        console.log(data)
+
+        if (data.history.boolean) {  
+          $('#historyTextInput').text('Ναι, '+ data.history.text)
+        } else if (data.history.boolean == false) {
+          $('#historyCheckdFalse').text('Όχι')
+        }
+
+        if (data.smoker) {
+          $('#smokerTrue').attr('checked', 'checked')
+        } else if (data.smoker == false) {
+          $('#smokerFalse').attr('checked', 'checked')
+        }
+
+        if (data.alcohol) {
+          $('#alcoholTrue').attr('checked', 'checked')
+        } else if (data.alcohol == false) {
+          $('#alcoholFalse').attr('checked', 'checked')
+        }
+
+        if (data.army.boolean) {
+          $('#armyCheckdTrue').attr('checked', 'checked')
+        } else if (data.army.boolean == false) {
+          $('#armyCheckdFalse').attr('checked', 'checked')
+          $('#armyText').show()
+          $('#armyTextInput').val(data.army.text)
+        }
+
+        if (data.annarotiki.boolean) {
+          $('#annarotikiCheckdTrue').attr('checked', 'checked')
+          $('#annarotikiText').show()
+          $('#annarotikiTextInput').val(data.annarotiki.text)
+        } else if (data.annarotiki.boolean == false) {
+          $('#annarotikiCheckdFalse').attr('checked', 'checked')
+        }
+
+        if (data.therapia.boolean) {
+          $('#therapiaCheckdTrue').attr('checked', 'checked')
+          $('#therapiaText').show()
+          $('#therapiaTextInput').val(data.therapia.text)
+        } else if (data.therapia.boolean == false) {
+          $('#therapiaCheckdFalse').attr('checked', 'checked')
+        }
+
+        if (data.eyesEarsDiscomfort) {
+          $('#eyesEarsDiscomfortTrue').attr('checked', 'checked')
+        } else if (data.eyesEarsDiscomfort == false) {
+          $('#eyesEarsDiscomfortFalse').attr('checked', 'checked')
+        }
+
+        if (data.illggous) {
+          $('#illggousTrue').attr('checked', 'checked')
+        } else if (data.illggous == false) {
+          $('#illggousFalse').attr('checked', 'checked')
+        }
+
+        if (data.gastrenteriko) {
+          $('#gastrenterikoTrue').attr('checked', 'checked')
+        } else if (data.gastrenteriko == false) {
+          $('#gastrenterikoFalse').attr('checked', 'checked')
+        }
+
+        if (data.kukloforiako) {
+          $('#kukloforiakoTrue').attr('checked', 'checked')
+        } else if (data.kukloforiako == false) {
+          $('#kukloforiakoFalse').attr('checked', 'checked')
+        }
+
+
+        if (data.anapnefstiko) {
+          $('#anapnefstikoTrue').attr('checked', 'checked')
+        } else if (data.anapnefstiko == false) {
+          $('#anapnefstikoFalse').attr('checked', 'checked')
+        }
+
+        if (data.ouropoihtiko) {
+          $('#ouropoihtikoTrue').attr('checked', 'checked')
+        } else if (data.ouropoihtiko == false) {
+          $('#ouropoihtikoFalse').attr('checked', 'checked')
+        }
+
+        if (data.muoskeletiko) {
+          $('#muoskeletikoTrue').attr('checked', 'checked')
+        } else if (data.muoskeletiko == false) {
+          $('#muoskeletikoFalse').attr('checked', 'checked')
+        }
+
+        if (data.anaimia.boolean) {
+          $('#anaimiaCheckdTrue').attr('checked', 'checked')
+          $('#anaimiaText').show()
+          $('#anaimiaTextInput').val(data.anaimia.text)
+        } else if (data.anaimia.boolean == false) {
+          $('#anaimiaCheckdFalse').attr('checked', 'checked')
+        }
+
+
+
+        if (data.alergia.boolean) {
+          $('#alergiaCheckdTrue').attr('checked', 'checked')
+          $('#alergiaText').show()
+          $('#alergiaTextInput').val(data.alergia.text)
+        } else if (data.anaimia.boolean == false) {
+          $('#alergiaCheckdFalse').attr('checked', 'checked')
+        }
+
+
+        if (data.egxeirish.boolean) {
+          $('#egxeirishCheckdTrue').attr('checked', 'checked')
+          $('#egxeirishText').show()
+
+
+          $("#egxeirishTextWHO_1").val(data.egxeirish.text[0].Who)
+          $("#egxeirishTextWHERE_1").val(data.egxeirish.text[0].Where)
+          $("#egxeirishTextWHEN_1").val(data.egxeirish.text[0].When)
+
+          $("#egxeirishTextWHO_2").val(data.egxeirish.text[1].Who)
+          $("#egxeirishTextWHERE_2").val(data.egxeirish.text[1].Where)
+          $("#egxeirishTextWHEN_2").val(data.egxeirish.text[1].When)
+
+          $("#egxeirishTextWHO_3").val(data.egxeirish.text[2].Who)
+          $("#egxeirishTextWHERE_3").val(data.egxeirish.text[2].Where)
+          $("#egxeirishTextWHEN_3").val(data.egxeirish.text[2].When)
+
+
+        } else if (data.egxeirish.boolean == false) {
+          $('#egxeirishCheckdFalse').attr('checked', 'checked')
+        }
+
+
+        $('#traumatismoi').val(data.traumatismoi)
+        $('#allesNosilies_1').val(data.allesNosilies[0])
+        $('#allesNosilies_2').val(data.allesNosilies[1])
+
+
+
+        if (data.osteosinthesi) {
+          $('#osteosinthesiTrue').attr('checked', 'checked')
+        } else if (data.osteosinthesi == false) {
+          $('#osteosinthesiFalse').attr('checked', 'checked')
+        }
+
+
+
+
+
+
+        if (data.SakxarodiDiabiti.boolean) {
+          $('#SakxarodiDiabitiCheckdTrue').attr('checked', 'checked')
+          $('#SakxarodiDiabitiText').show()
+
+
+          $("#SakxarodiDiabitiWHO_1").val(data.SakxarodiDiabiti.text[0].Who)
+          $("#SakxarodiDiabitiWHEN_1").val(data.SakxarodiDiabiti.text[0].When)
+          $("#SakxarodiDiabitiRESULT_1").val(data.SakxarodiDiabiti.text[0].Result)
+
+          $("#SakxarodiDiabitiWHO_2").val(data.SakxarodiDiabiti.text[1].Who)
+          $("#SakxarodiDiabitiWHEN_2").val(data.SakxarodiDiabiti.text[1].When)
+          $("#SakxarodiDiabitiRESULT_2").val(data.SakxarodiDiabiti.text[1].Result)
+
+          $("#SakxarodiDiabitiWHO_3").val(data.SakxarodiDiabiti.text[2].Who)
+          $("#SakxarodiDiabitiWHEN_3").val(data.SakxarodiDiabiti.text[2].When)
+          $("#SakxarodiDiabitiRESULT_3").val(data.SakxarodiDiabiti.text[2].Result)
+
+
+        } else if (data.SakxarodiDiabiti.boolean == false) {
+          $('#SakxarodiDiabitiCheckdFalse').attr('checked', 'checked')
+        }
+
+
+
+
+        if (data.gunaikologikaProblimata.boolean) {
+          $('#gunaikologikaProblimataTrue').attr('checked', 'checked')
+          $('#gunaikologikaProblimataText').show()
+          $('#gunaikologikaProblimataInput').val(data.gunaikologikaProblimata.text)
+        } else if (data.gunaikologikaProblimata.boolean == false) {
+          $('#gunaikologikaProblimataFalse').attr('checked', 'checked')
+        }
+
+
+
+
+        if (data.egkuos.boolean) {
+          $('#egkuosTrue').attr('checked', 'checked')
+          $('#egkuosText').show()
+          $('#egkuosInput').val(data.egkuos.text)
+        } else if (data.egkuos.boolean == false) {
+          $('#egkuosFalse').attr('checked', 'checked')
+        }
+
+
+
+
+        $('#sullipseis').val(data.sullipseis)
+
+        $('#apovoles').val(data.apovoles)
+
+
+        if (data.checkup.boolean) {
+          $('#checkupTrue').attr('checked', 'checked')
+          $('#checkupText').show()
+
+
+          $("#checkupTextWHO_1").val(data.checkup.Status[0].Who)
+          $("#checkupTextWHEN_1").val(data.checkup.Status[0].When)
+          $("#checkupTextWHERE_1").val(data.checkup.Status[0].Where)
+
+          $("#checkupTextWHO_2").val(data.checkup.Status[1].Who)
+          $("#checkupTextWHEN_2").val(data.checkup.Status[1].When)
+          $("#checkupTextWHERE_2").val(data.checkup.Status[1].Where)
+
+          $("#checkupTextWHO_3").val(data.checkup.Status[2].Who)
+          $("#checkupTextWHEN_3").val(data.checkup.Status[2].When)
+          $("#checkupTextWHERE_3").val(data.checkup.Status[2].Where)
+
+
+        } else if (data.checkup.boolean == false) {
+          $('#checkupFalse').attr('checked', 'checked')
+        }
+
+
+
+        if (data.metavoliVarous) {
+          $('#metavoliVarousTrue').attr('checked', 'checked')
+        } else if (data.metavoliVarous == false) {
+          $('#metavoliVarousFalse').attr('checked', 'checked')
+        }
+
+
+
+        if (data.farmaka.boolean) {
+          $('#farmakaTrue').attr('checked', 'checked')
+          $('#farmakaText').show()
+          $("#farmakaAitia").val(data.farmaka.Aitia)
+          $("#farmakaEidos").val(data.farmaka.Eidos)
+
+        } else if (data.farmaka.boolean == false) {
+          $('#farmakaFalse').attr('checked', 'checked')
+        }
+
+
+
+
+        if (data.allo.boolean) {
+          $('#alloTrue').attr('checked', 'checked')
+          $('#alloText').show()
+          $("#alloInput").val(data.allo.text)
+
+
+        } else if (data.allo.boolean == false) {
+          $('#alloFalse').attr('checked', 'checked')
+        }
+
+
+
+
+
+      }
+    }).catch((err) => {
+      console.log(err);
+    })
+
+
+  });
+</script>
+
+
+<div class="row">
+  <div class="col-12">
+    <div class="card mb-4">
+      <div class="card-header"><strong>Επεξεργασία Ασθενή </strong></div>
+
+      <div class="card-body">
+
+        {{!-- <p class="text-medium-emphasis small">Ενδεχομένος οδηγίες προς τον χρήστη που συμπληρώνει την φόρμα.</p>
+        --}}
+
+
+
+        </script>
+
+
+        <div class="example">
+
+          <!-- Form -->
+          <div class="tab-content rounded-bottom">
+            <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-789" id="UserFormEmail">
+
+
+              <form class="row g-3" method="post" action="#" id="source-html">
+
+
+
+
+                <h3>ΜΕΡΟΣ ΠΡΩΤΟ: ΔΗΛΩΣΕΙΣ ΤΟΥ ΠΡΟΤΕΙΝΟΜΕΝΟΥ ΓΙΑ ΑΣΦΑΛΙΣΗ ΣΤΟΝ ΕΞΕΤΑΣΤΗ ΙΑΤΡΟ </h3>
+
+                <h3>ΠΑΡΑΚΛΗΣΗ ΟΠΩΣ ΑΠΑΝΤΗΘΟΥΝ ΟΛΕΣ ΟΙ ΕΡΩΤΗΣΕΙΣ </h3>
+
+                <div class="row g-3">
+
+
+
+
+                  <div class="table-responsive">
+                    <table class="table border mb-0 align-middle">
+
+                      <tr>
+                        <td>Όνοματεπώνυμο</td>
+                        <td id="fname"></td>
+                      </tr>
+
+                       <tr>
+                        <td>Ημερομηνία Γέννησεως</td>
+                        <td id="DateOfBirth">{{formatTime user.DateOfBirth  'YYYY-MM-DD'}}</td>
+                      </tr>
+
+                      <tr>
+                        <td>Διεύθηνση</td>
+                        <td id="streetName">{{user.Address.streetName}} {{user.Address.streetNumber}}, {{user.Address.streetZip}} </td>
+                      </tr>
+
+                      <tr>
+                        <td>Στοιχεία Αστυνομικής Ταυτότητας</td>
+                        <td id="DateOfBirth">{{formatTime user.DateOfBirth  'YYYY-MM-DD'}}</td>
+                      </tr>
+
+                       <tr>
+                        <td>Ασφαλιστικό Ταμείο</td>
+                        <td id="DateOfBirth">{{user.AsfalistikoTameio}}</td>
+                      </tr>
+
+                    </table>
+                  </div>
+
+
+
+
+                </div>
+
+
+       
+
+                <div class="table-responsive">
+                  <table class="table border mb-0" style="text-align: center;  border: 1px solid black;  border-collapse: collapse;margin-top:60px; ">
+
+                    <thead class="table-light fw-semibold">
+                      <tr class="align-middle">
+                        <th class="col-md-2">Συγγενείς Α' Βαθμού</th>
+                        <th class="col-md-2">Ηλικία</th>
+                        <th scope="col">Κατάσταση Υγείας</th>
+                        <th scope="col" class="col-md-2">Ηλικία Θανάτου</th>
+                        <th scope="col">Αιτία Θανάτου</th>
+
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <tr >
+
+                        {{!-- {{user.familyTable[0].member_age}} --}}
+                        <th scope="row">Πατέρας</th>
+                        <td class="text-center"><p id="fatherAge"></p></td>
+                        <td class="text-center"><p id="fatherHealth"></p></td>
+                        <td class="text-center"><p id="fatherAgeDeath"></p></td>
+                        <td class="text-center"><p id="fatherReasonDeath"></p></td>
+
+                      </tr>
+
+
+
+
+
+
+
+                      <tr >
+                        <th scope="row">Μητερα</th>
+                        <td><p id="motherAge"></p></td>
+                        <td><p id="motherHealth"></p></td>
+                        <td><p id="motherAgeDeath"></p></td>
+                        <td><p id="motherReasonDeath"></p></td>
+                      </tr>
+
+                      <tr class="align-middle">
+                        <th scope="row">Αδελφοί</th>
+                        <td><input class="form-control" type="number" id="brotherAge" name="brotherAge"></td>
+                        <td><input class="form-control" type="text" id="brotherHealth" name="brotherHealth"></td>
+                        <td><input class="form-control" type="number" id="brotherAgeDeath" name="brotherAgeDeath"></td>
+                        <td><input class="form-control" type="text" id="brotherReasonDeath" name="brotherReasonDeath">
+                        </td>
+                      </tr>
+
+                      <tr class="align-middle">
+                        <th scope="row">Αδελφές</th>
+                        <td><input class="form-control" type="number" id="sisterAge" name="sisterAge"></td>
+                        <td><input class="form-control" type="text" id="sisterHealth" name="sisterHealth"></td>
+                        <td><input class="form-control" type="number" id="sisterAgeDeath" name="sisterAgeDeath"></td>
+                        <td><input class="form-control" type="text" id="sisterReasonDeath" name="sisterReasonDeath">
+                        </td>
+                      </tr>
+
+                      <tr class="align-middle">
+                        <th scope="row">Συζυγος</th>
+                        <td><input class="form-control" type="number" id="wifeAge" name="wifeAge"></td>
+                        <td><input class="form-control" type="text" id="wifeHealth" name="wifeHealth"></td>
+                        <td><input class="form-control" type="number" id="wifeAgeDeath" name="wifeAgeDeath"></td>
+                        <td><input class="form-control" type="text" id="wifeReasonDeath" name="wifeReasonDeath"></td>
+                      </tr>
+
+
+
+
+                    </tbody>
+                  </table>
+                </div>
+
+
+
+
+
+
+                {{!-- -------------------------------- --}}
+                
+             
+
+                {{!--
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> --}}
+
+
+                <table id="" class="table table-bordered pt-5" style="text-align: center;margin-top:60px; border: 1px solid black;  border-collapse: collapse;">
+
+                  <tbody>
+
+
+                    <tr class="align-middle">
+                      <td class="col-sm-4">
+                        <p>Υπάρχει στην οικογένειά σας ιστορικό καρδιοπάθειας, σακχαρώδη διαβήτη,
+                          νευρολογικής νόσου, φυματιώσεως, μεσογειακής αναιμίας, συγγενούς ανωμαλίας κατά τη διάπλαση
+                          (συγγενές εξάρθρημα ισχίου κ.λ.π); </p>
+
+
+                      </td>
+                      <td class="col-sm-4">
+                        <div class="col-12">
+                          <div class="form-check">
+                            <div>
+                              <p  id="historyTextInput"></p>
+                            </div>
+
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <tr class="align-middle">
+                      <td class="col-sm-4">
+                        <p>Είστε καπνιστής; </p>
+
+
+                      </td>
+                      <td class="col-sm-4">
+                        <div class="col-12">
+                          <div class="form-check">
+                            <div>
+
+                              <label>
+                                <input type="checkbox" class="radio" value="true" name="smoker" id="smokerTrue"
+                                  value="true" />Ναι</label>
+                              <label>
+                                <input type="checkbox" class="radio" value="false" name="smoker" id="smokerFalse"
+                                  value="false" />Οχι</label>
+
+                            </div>
+
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <tr class="align-middle">
+                      <td class="col-sm-4">
+                        <p>Κάνετε χρήση οινοπνευματικών ποτών; </p>
+
+
+                      </td>
+                      <td class="col-sm-4">
+                        <div class="col-12">
+                          <div class="form-check">
+                            <div>
+
+                              <label>
+                                <input type="checkbox" class="radio" value="true" name="alcohol" id="alcoholTrue"
+                                  value="true" />Ναι</label>
+                              <label>
+                                <input type="checkbox" class="radio" value="false" name="alcohol" id="alcoholFalse"
+                                  value="false" />Οχι</label>
+
+                            </div>
+
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+
+
+
+
+
+                    <tr class="align-middle">
+                      <td>
+                        <p>Υπηρετήσατε κανονικά στο στατό, χωρίς αναβολή για λόγους υγεί- ας; (για άνδρες); </p>
+                      </td>
+                      <td class="col-sm-4">
+                        <div class="col-12">
+                          <div class="form-check">
+                            <div>
+
+                              <label>
+                                <input type="checkbox" class="radio armyCheckd" value="true" name="army"
+                                  id="armyCheckdTrue" />Ναι</label>
+                              <label>
+                                <input type="checkbox" class="radio armyCheckd" value="false" name="army"
+                                  id="armyCheckdFalse" value="false" />Οχι</label>
+                              <div id="armyText" style="display:none;">
+                                <hr>
+                                <p>Περιγράψτε</p>
+                                <input class="form-control" type="text" name="armyText" id="armyTextInput">
+                              </div>
+
+
+
+
+                            </div>
+
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <tr class="align-middle">
+                      <td>
+                        <p>Πήρατε ποτέ αναρρωτική άδεια από το ασφαλιστικό ταμείο σας ή παραμείνατε μερικά ή ολικά
+                          ανίκανος για εργασία για κάποιο χρονικό διάστημα;
+                        </p>
+                      </td>
+                      <td class="col-sm-4">
+                        <div class="col-12">
+                          <div class="form-check">
+                            <div>
+
+                              <label>
+                                <input type="checkbox" class="radio annarotikiCheckd" value="true" name="annarotiki"
+                                  id="annarotikiCheckdTrue" />Ναι</label>
+                              <label>
+                                <input type="checkbox" class="radio annarotikiCheckd" value="false" name="annarotiki"
+                                  id="annarotikiCheckdFalse" value="false" />Οχι</label>
+
+                              <div id="annarotikiText" style="display:none;">
+                                <hr>
+                                <p>Λόγος;</p>
+
+                                <textarea class="form-control" name="annarotikiTextInput" id="annarotikiTextInput"
+                                  rows="4" cols="50">
+</textarea>
+                              </div>
+
+
+
+
+                            </div>
+
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+
+
+
+                    <tr class="align-middle">
+                      <td>
+                        <p>Βρίσκεστε τώρα σε ιατρική θεραπεία ή παρακολούθηση;
+                        </p>
+                      </td>
+                      <td class="col-sm-4">
+                        <div class="col-12">
+                          <div class="form-check">
+                            <div>
+
+                              <label>
+                                <input type="checkbox" class="radio therapiaCheckd" value="true" name="therapia"
+                                  id="therapiaCheckdTrue" />Ναι</label>
+                              <label>
+                                <input type="checkbox" class="radio therapiaCheckd" value="false" name="therapia"
+                                  id="therapiaCheckdFalse" value="false" />Οχι</label>
+                              <div id="therapiaText" style="display:none;">
+                                <hr>
+                                <p>Λόγος</p>
+
+
+                                <textarea class="form-control" name="therapiaText" id="therapiaTextInput" rows="4"
+                                  cols="50">
+</textarea>
+                              </div>
+
+
+
+
+                            </div>
+
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <tr class="align-middle">
+                      <td>
+                        <p>Είχατε ποτέ πάθηση ή ενοχλήσεις από τα αυτιά ή τα μάτια;
+                        </p>
+                      </td>
+                      <td class="col-sm-4">
+                        <div class="col-12">
+                          <div class="form-check">
+                            <div>
+
+                              <label>
+                                <input type="checkbox" class="radio" value="true" name="eyesEarsDiscomfort"
+                                  id="eyesEarsDiscomfortTrue" />Ναι</label>
+                              <label>
+                                <input type="checkbox" class="radio" value="false" name="eyesEarsDiscomfort"
+                                  id="eyesEarsDiscomfortFalse" value="false" />Οχι</label>
+
+                            </div>
+
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+
+
+                    <tr class="align-middle">
+                      <td>
+                        <p>Είχατε ποτέ πάθηση ή ενοχλήσεις από το νευρικό σύστημα (κεφαλαλγίες, ιλίγγους, λιποθυμίες);
+                        </p>
+                      </td>
+                      <td class="col-sm-4">
+                        <div class="col-12">
+                          <div class="form-check">
+                            <div>
+
+                              <label>
+                                <input type="checkbox" class="radio" value="true" name="illggous"
+                                  id="illggousTrue" />Ναι</label>
+                              <label>
+                                <input type="checkbox" class="radio" value="false" name="illggous" id="illggousFalse"
+                                  value="false" />Οχι</label>
+
+                            </div>
+
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <tr class="align-middle">
+                      <td>
+                        <p>Είχατε ποτέ πάθηση ή ενοχλήσεις από το γαστρεντερικό σύστημα (έλκος, γαστρίτιδα,
+                          σκωλικοειδίτιδα, κολίτιδα, αιμμοροϊδες, κύστη κόκκυγος, κήλη, κ.λ.π.);
+
+                        </p>
+                      </td>
+                      <td class="col-sm-4">
+                        <div class="col-12">
+                          <div class="form-check">
+                            <div>
+
+                              <label>
+                                <input type="checkbox" class="radio" value="true" name="gastrenteriko"
+                                  id="gastrenterikoTrue" />Ναι</label>
+                              <label>
+                                <input type="checkbox" class="radio" value="false" name="gastrenteriko"
+                                  id="gastrenterikoFalse" value="false" />Οχι</label>
+
+                            </div>
+
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+
+
+                    <tr class="align-middle">
+                      <td>
+                        <p>Είχατε ποτέ πάθηση ή ενοχλήσεις από το αναπνευστικό σύστημα (πνευμονία, πλευρίτιδα, έμμονη
+                          φαρυγγίτιδα, λαριγγίτιδα, αμυγδα- λίτιδα κ.λ.π.);
+
+
+                        </p>
+                      </td>
+                      <td class="col-sm-4">
+                        <div class="col-12">
+                          <div class="form-check">
+                            <div>
+
+                              <label>
+                                <input type="checkbox" class="radio" value="true" name="anapnefstiko"
+                                  id="anapnefstikoTrue" />Ναι</label>
+                              <label>
+                                <input type="checkbox" class="radio" value="false" name="anapnefstiko"
+                                  id="anapnefstikoFalse" value="false" />Οχι</label>
+
+                            </div>
+
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <tr class="align-middle">
+                      <td>
+                        <p>Είχατε ποτέ πάθηση ή ενοχλήσεις από το κυκλοφορικό σύστημα (υπέρταση, υπόταση, καρδιοπάθεια,
+                          αρτηριακή ή φλεβική κυκλοφο- ρία κάτω άκρων αιμοφόρα αγγεία κ.λ.π.);
+
+                        </p>
+                      </td>
+                      <td class="col-sm-4">
+                        <div class="col-12">
+                          <div class="form-check">
+                            <div>
+
+                              <label>
+                                <input type="checkbox" class="radio" value="true" name="kukloforiako"
+                                  id="kukloforiakoTrue" />Ναι</label>
+                              <label>
+                                <input type="checkbox" class="radio" value="false" name="kukloforiako"
+                                  id="kukloforiakoFalse" value="false" />Οχι</label>
+
+                            </div>
+
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+
+
+                    <tr class="align-middle">
+                      <td>
+                        <p>Είχατε ποτέ πάθηση ή ενοχλήσεις από το ουροποιητικό σύστημα ή γεννητικό σύστημα (νεφροπάθεια,
+                          νεφρολιθίαση, προστάτη, αφρο- δίσια νοσήματα κ.λ.π.);
+
+
+                        </p>
+                      </td>
+                      <td class="col-sm-4">
+                        <div class="col-12">
+                          <div class="form-check">
+                            <div>
+
+                              <label>
+                                <input type="checkbox" class="radio" value="true" name="ouropoihtiko"
+                                  id="ouropoihtikoTrue" />Ναι</label>
+                              <label>
+                                <input type="checkbox" class="radio" value="false" name="ouropoihtiko"
+                                  id="ouropoihtikoFalse" value="false" />Οχι</label>
+
+                            </div>
+
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+
+
+                    <tr class="align-middle">
+                      <td>
+                        <p>Είχατε ποτέ πάθηση ή ενοχλήσεις από το μυοσκελετικό σύστημα (αρθρίτιδες, οσφυαλγία,
+                          ισχιαλγία, αυχενικό σύνδρομο κ.λ.π.);
+
+
+
+                        </p>
+                      </td>
+                      <td class="col-sm-4">
+                        <div class="col-12">
+                          <div class="form-check">
+                            <div>
+
+                              <label>
+                                <input type="checkbox" class="radio" value="true" name="muoskeletiko"
+                                  id="muoskeletikoTrue" />Ναι</label>
+                              <label>
+                                <input type="checkbox" class="radio" value="false" name="muoskeletiko"
+                                  id="muoskeletikoFalse" value="false" />Οχι</label>
+
+                            </div>
+
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <tr class="align-middle">
+                      <td>
+                        <p>Είχατε ποτέ πρόβλημα αναιμίας; Εάν ναι διευκρινίστε λεπτομερώς
+
+                        </p>
+                      </td>
+                      <td class="col-sm-4">
+                        <div class="col-12">
+                          <div class="form-check">
+                            <div>
+
+                              <label>
+                                <input type="checkbox" class="radio anaimiaCheckd" value="true" name="anaimia"
+                                  id="anaimiaCheckdTrue" />Ναι</label>
+                              <label>
+                                <input type="checkbox" class="radio anaimiaCheckd" value="false" name="anaimia"
+                                  id="anaimiaCheckdFalse" value="false" />Οχι</label>
+
+                              <div id="anaimiaText" style="display:none;">
+                                <hr>
+                                <p>Διευκρινίστε λεπτομερώς.</p>
+
+
+                                <textarea class="form-control" name="anaimiaText" id="anaimiaTextInput" rows="4"
+                                  cols="50">
+</textarea>
+                              </div>
+
+                            </div>
+
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+
+
+                    <tr class="align-middle">
+                      <td>
+                        <p>Είχατε ποτέ πρόβλημα αλλεργίας; Εάν ναι διευκρινίστε λεπτομερώς
+
+                        </p>
+                      </td>
+                      <td class="col-sm-4">
+                        <div class="col-12">
+                          <div class="form-check">
+                            <div>
+
+                              <label>
+                                <input type="checkbox" class="radio alergiaCheckd" value="true" name="alergia"
+                                  id="alergiaCheckdTrue" />Ναι</label>
+                              <label>
+                                <input type="checkbox" class="radio alergiaCheckd" value="false" name="alergia"
+                                  id="alergiaCheckdFalse" value="false" />Οχι</label>
+
+                              <div id="alergiaText" style="display:none;">
+                                <hr>
+                                <p>Διευκρινίστε λεπτομερώς.</p>
+                                <textarea class="form-control" name="alergiaText" id="alergiaTextInput" rows="4"
+                                  cols="50">
+</textarea>
+
+
+                              </div>
+
+                            </div>
+
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+
+
+                    <tr class="align-middle">
+                      <td>
+                        <p>Υποβληθήκατε σε εγχειρήσεις; Εάν ναι, σε ποιές, που και πότε;
+
+                        </p>
+                      </td>
+                      <td class="col-sm-4">
+                        <div class="col-12">
+                          <div class="form-check">
+                            <div>
+
+                              <label>
+                                <input type="checkbox" class="radio egxeirishCheckd" value="true" name="egxeirish"
+                                  id="egxeirishCheckdTrue" />Ναι</label>
+                              <label>
+                                <input type="checkbox" class="radio egxeirishCheckd" value="false" name="egxeirish"
+                                  id="egxeirishCheckdFalse" value="false" />Οχι</label>
+
+                              <div id="egxeirishText" style="display:none;">
+                                <hr>
+                                <p>Διευκρινίστε λεπτομερώς.</p>
+
+
+
+                                <div class="table-responsive">
+                                  <table class="table border mb-0" id="egxeiriseisTable">
+                                    <tr>
+                                      <th>Ποιές;</th>
+                                      <th>Που;</th>
+                                      <th>Πότε;</th>
+                                    </tr>
+                                    <tbody id="egxeiriseisTableBody">
+
+                                      <tr id="1">
+                                        <td> <input class="form-control" type="text" name="egxeirishTextWHO_1"
+                                            id="egxeirishTextWHO_1"></td>
+                                        <td> <input class="form-control" type="text" name="egxeirishTextWHERE_1"
+                                            id="egxeirishTextWHERE_1"></td>
+                                        <td> <input class="form-control" type="number" name="egxeirishTextWHEN_1"
+                                            id="egxeirishTextWHEN_1"></td>
+                                      </tr>
+
+                                      <tr id="2">
+                                        <td> <input class="form-control" type="text" name="egxeirishTextWHO_2"
+                                            id="egxeirishTextWHO_2"></td>
+                                        <td> <input class="form-control" type="text" name="egxeirishTextWHERE_2"
+                                            id="egxeirishTextWHERE_2"></td>
+                                        <td> <input class="form-control" type="number" name="egxeirishTextWHEN_2"
+                                            id="egxeirishTextWHEN_2"></td>
+                                      </tr>
+
+                                      <tr id="3">
+                                        <td> <input class="form-control" type="text" name="egxeirishTextWHO_3"
+                                            id="egxeirishTextWHO_3"> </td>
+                                        <td> <input class="form-control" type="text" name="egxeirishTextWHERE_3"
+                                            id="egxeirishTextWHERE_3"></td>
+                                        <td> <input class="form-control" type="number" name="egxeirishTextWHEN_3"
+                                            id="egxeirishTextWHEN_3"></td>
+                                      </tr>
+                                    </tbody>
+
+                                  </table>
+                                  <hr>
+                                  {{!-- <button type="button" class="btn btn-info" id="AddTableRow">Εισαγωγή
+                                    γραμμών</button> --}}
+                                </div>
+
+                              </div>
+
+                            </div>
+
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+
+
+
+
+                    <tr class="align-middle">
+                      <td>
+                        <p>Αναφέρατε τραυματισμούς (κακώσεις, κατάγματα κ.λ.π.)
+
+                        </p>
+                      </td>
+                      <td class="col-sm-4">
+                        <div class="col-12">
+                          <div class="form-check">
+                            <div>
+
+
+                              <label> Τραυματισμοί</label>
+                              <hr>
+                              <textarea class="form-control" name="traumatismoi" id="traumatismoi" rows="4" cols="50">
+</textarea>
+
+
+                            </div>
+
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+
+
+
+                    <tr class="align-middle">
+                      <td>
+                        <p>Yπάρχουν υλικά οστεοσύνθεσης
+
+
+
+
+                        </p>
+                      </td>
+                      <td class="col-sm-4">
+                        <div class="col-12">
+                          <div class="form-check">
+                            <div>
+
+                              <label>
+                                <input type="checkbox" class="radio" value="true" name="osteosinthesi"
+                                  id="osteosinthesiTrue" />Ναι</label>
+                              <label>
+                                <input type="checkbox" class="radio" value="false" name="osteosinthesi"
+                                  id="osteosinthesiFalse" value="false" />Οχι</label>
+
+                            </div>
+
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+
+
+                    <tr class="align-middle">
+                      <td>
+                        <p> Αναφέρατε άλλες νοσηλείες εκτός των ανωτέρω αιτιών
+
+                        </p>
+                      </td>
+                      <td class="col-sm-4">
+                        <div class="col-12">
+                          <div class="form-check">
+
+                            <div class="table-responsive">
+                              <table class="table border mb-0" id="nosiliesTable">
+                                <tr>Άλλες νοσηλείες</tr>
+                                <tbody id="nosiliesTableBody">
+
+                                  <tr id="1">
+                                    <td> <input class="form-control" type="text" name="allesNosilies_1"
+                                        id="allesNosilies_1"></td>
+                                  </tr>
+
+                                  <tr id="2">
+                                    <td> <input class="form-control" type="text" name="allesNosilies_2"
+                                        id="allesNosilies_2"></td>
+                                  </tr>
+
+
+                                </tbody>
+
+                              </table>
+
+                              {{!-- <button type="button" class="btn btn-info" id="AddTableNosiliesRow">Εισαγωγή
+                                γραμμών</button> --}}
+                            </div>
+
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+
+
+                    <tr class="align-middle">
+                      <td>
+                        <p>Είχατε ποτέ ενοχλήσεις ή υποβληθήκατε σε έλεγχο για σακχαρώδη
+                          διαβήτη ή νόσο του θυροειδούς;
+                          Εάν ναι, σε ποιές, πότε, και το αποτέλεσμα αυτών
+
+                        </p>
+                      </td>
+                      <td class="col-sm-4">
+                        <div class="col-12">
+                          <div class="form-check">
+                            <div>
+
+                              <label>
+                                <input type="checkbox" class="radio SakxarodiDiabitiCheckd" value="true"
+                                  name="SakxarodiDiabiti" id="SakxarodiDiabitiCheckdTrue" />Ναι</label>
+                              <label>
+                                <input type="checkbox" class="radio SakxarodiDiabitiCheckd" value="false"
+                                  name="SakxarodiDiabiti" id="SakxarodiDiabitiCheckdFalse" value="false" />Οχι</label>
+
+                              <div id="SakxarodiDiabitiText" style="display:none;">
+                                <div class="table-responsive">
+                                  <table class="table border mb-0" id="diabitiTable">
+                                    <tr>
+                                      <td>Ποίες</td>
+                                      <td>Πότε</td>
+                                      <td>Αποτέλεσμα</td>
+                                    </tr>
+
+                                    <tbody id="SakxarodiDiabitisTableBody">
+                                      <tr id="1">
+                                        <td> <input class="form-control" type="text" name="SakxarodiDiabitiWHO_1"
+                                            id="SakxarodiDiabitiWHO_1"></td>
+                                        <td> <input class="form-control" type="text" name="SakxarodiDiabitiWHEN_1"
+                                            id="SakxarodiDiabitiWHEN_1"></td>
+                                        <td> <input class="form-control" type="text" name="SakxarodiDiabitiRESULT_1"
+                                            id="SakxarodiDiabitiRESULT_1">
+                                        </td>
+                                      </tr>
+
+                                      <tr id="2">
+                                        <td> <input class="form-control" type="text" name="SakxarodiDiabitiWHO_2"
+                                            id="SakxarodiDiabitiWHO_2"></td>
+                                        <td> <input class="form-control" type="text" name="SakxarodiDiabitiWHEN_2"
+                                            id="SakxarodiDiabitiWHEN_2"></td>
+                                        <td> <input class="form-control" type="text" name="SakxarodiDiabitiRESULT_2"
+                                            id="SakxarodiDiabitiRESULT_2">
+                                        </td>
+                                      </tr>
+
+                                      <tr id="3">
+                                        <td> <input class="form-control" type="text" name="SakxarodiDiabitiWHO_3"
+                                            id="SakxarodiDiabitiWHO_3"></td>
+                                        <td> <input class="form-control" type="text" name="SakxarodiDiabitiWHEN_3"
+                                            id="SakxarodiDiabitiWHEN_3"></td>
+                                        <td> <input class="form-control" type="text" name="SakxarodiDiabitiRESULT_3"
+                                            id="SakxarodiDiabitiRESULT_3">
+                                        </td>
+                                      </tr>
+                                    </tbody>
+
+                                  </table>
+                                  <hr>
+                                  {{!-- <button type="button" class="btn btn-info" id="AddTableDiabitiRow">Εισαγωγή
+                                    γραμμών</button> --}}
+                                </div>
+
+
+                              </div>
+
+                            </div>
+
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+
+
+                    <tr class="align-middle">
+                      <td>
+                        <p>Είχατε ποτέ γυναικολογικό πρόβλημα ή πρόβλημα μαστών;
+                          (για γυναίκες)
+
+
+                        </p>
+                      </td>
+                      <td class="col-sm-4">
+                        <div class="col-12">
+                          <div class="form-check">
+                            <div>
+
+                              <label>
+                                <input type="checkbox" class="radio gunaikologikaProblimata" value="true"
+                                  name="gunaikologikaProblimata" id="gunaikologikaProblimataTrue" />Ναι</label>
+                              <label>
+                                <input type="checkbox" class="radio gunaikologikaProblimata" value="false"
+                                  name="gunaikologikaProblimata" id="gunaikologikaProblimataFalse"
+                                  value="false" />Οχι</label>
+
+                            </div>
+                            <div id="gunaikologikaProblimataText" style="display:none;">
+                              <hr>
+                              <p>Διευκρινίστε λεπτομερώς.</p>
+                              <textarea class="form-control" name="gunaikologikaProblimataText"
+                                id="gunaikologikaProblimataInput" rows="4" cols="50">
+</textarea>
+
+
+                            </div>
+
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+
+
+                    <tr class="align-middle">
+                      <td>
+                        <p>Είστε έγκυος; Εάν ναι σε ποιό μήνα;
+
+
+                        </p>
+                      </td>
+                      <td class="col-sm-4">
+                        <div class="col-12">
+                          <div class="form-check">
+                            <div>
+
+                              <label>
+                                <input type="checkbox" class="radio egkuos" value="true" name="egkuos"
+                                  id="egkuosTrue" />Ναι</label>
+                              <label>
+                                <input type="checkbox" class="radio egkuos" value="false" name="egkuos" id="egkuosFalse"
+                                  value="false" />Οχι</label>
+
+                            </div>
+                            <div id="egkuosText" style="display:none;">
+                              <hr>
+                              <p>Αναφέρατε μήνα.</p>
+
+                              <input class="form-control" name="egkuosText" name="egkuosInput" id="egkuosInput"
+                                type="text">
+
+
+                            </div>
+
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+
+
+                    <tr class="align-middle">
+                      <td>
+                        <p>Αναφέρατε τον αριθμό των συλλήψεων καθώς και εάν περατώθηκαν ή όχι.
+
+
+
+                        </p>
+                      </td>
+                      <td class="col-sm-4">
+                        <div class="col-12">
+                          <div class="form-check">
+                            <div>
+
+
+                              <textarea class="form-control" name="sullipseis" id="sullipseis" rows="4" cols="50">
+</textarea>
+
+                            </div>
+
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <tr class="align-middle">
+                      <td>
+                        <p>Αναφέρατε τον αριθμό των αποβολών.
+
+
+
+                        </p>
+                      </td>
+                      <td class="col-sm-4">
+                        <div class="col-12">
+                          <div class="form-check">
+                            <div>
+
+                              <input class="form-control" type="text" name="apovoles" id="apovoles">
+
+
+                            </div>
+
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <tr class="align-middle">
+                      <td>
+                        <p>Έχετε υποβληθεί σε Check-up ή επί μέρους εξετάσεις ελέγχου το τελευταίο εξάμηνο;
+                          Εάν ναι, σε ποιές, πότε, και το αποτέλεσμα αυτών
+                        </p>
+                      </td>
+                      <td class="col-sm-4">
+                        <div class="col-12">
+                          <div class="form-check">
+                            <div>
+
+                              <div>
+
+                                <label>
+                                  <input type="checkbox" class="radio" value="true" name="checkup"
+                                    id="checkupTrue" />Ναι</label>
+                                <label>
+                                  <input type="checkbox" class="radio" value="false" name="checkup" id="checkupFalse"
+                                    value="false" />Οχι</label>
+
+                              </div>
+
+                              <div class="table-responsive" style="display:none;" id="checkupText">
+                                <table class="table border mb-0" id="checkupTable">
+                                  <tr>
+                                    <th>Ποιές;</th>
+                                    <th>Που;</th>
+                                    <th>Πότε;</th>
+                                  </tr>
+                                  <tbody id="checkupTableBody">
+
+                                    <tr id="1">
+                                      <td> <input class="form-control" type="text" name="checkupTextWHO_1"
+                                          id="checkupTextWHO_1"></td>
+                                      <td> <input class="form-control" type="text" name="checkupTextWHERE_1"
+                                          id="checkupTextWHERE_1"></td>
+                                      <td> <input class="form-control" type="text" name="checkupTextWHEN_1"
+                                          id="checkupTextWHEN_1"></td>
+                                    </tr>
+
+                                    <tr id="2">
+                                      <td> <input class="form-control" type="text" name="checkupTextWHO_2"
+                                          id="checkupTextWHO_2"></td>
+                                      <td> <input class="form-control" type="text" name="checkupTextWHERE_2"
+                                          id="checkupTextWHERE_2"></td>
+                                      <td> <input class="form-control" type="text" name="checkupTextWHEN_2"
+                                          id="checkupTextWHEN_2"></td>
+                                    </tr>
+
+                                    <tr id="3">
+                                      <td> <input class="form-control" type="text" name="checkupTextWHO_3"
+                                          id="checkupTextWHO_3"></td>
+                                      <td> <input class="form-control" type="text" name="checkupTextWHERE_3"
+                                          id="checkupTextWHERE_3"></td>
+                                      <td> <input class="form-control" type="text" name="checkupTextWHEN_3"
+                                          id="checkupTextWHEN_3" id></td>
+                                    </tr>
+                                  </tbody>
+
+                                </table>
+
+                                {{!-- <button type="button" class="btn btn-info" id="AddTableCheckupRow">Εισαγωγή
+                                  γραμμών</button> --}}
+                              </div>
+
+
+                            </div>
+
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <tr class="align-middle">
+                      <td>
+                        <p>Έχει μεταβληθεί σημαντικά το βάρος σας το τελευταίο έτος;
+                        </p>
+                      </td>
+                      <td class="col-sm-4">
+                        <div class="col-12">
+                          <div class="form-check">
+                            <div>
+
+                              <label>
+                                <input type="checkbox" class="radio" value="true" name="metavoliVarous"
+                                  id="metavoliVarousTrue" />Ναι</label>
+                              <label>
+                                <input type="checkbox" class="radio" value="false" name="metavoliVarous"
+                                  id="metavoliVarousFalse" value="false" />Οχι</label>
+
+                            </div>
+
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+
+
+                    <tr class="align-middle">
+                      <td>
+                        <p>Λάβατε ή λαμβάνετε οποιαδήποτε φαρμακευτική αγωγή;
+                          Εάν ναι, διευκρινίστε την αιτία και το είδος
+                        </p>
+                      </td>
+                      <td class="col-sm-4">
+                        <div class="col-12">
+                          <div class="form-check">
+                            <div>
+
+                              <label>
+                                <input type="checkbox" class="radio farmaka" value="true" name="farmaka"
+                                  id="farmakaTrue" />Ναι</label>
+                              <label>
+                                <input type="checkbox" class="radio farmaka" value="false" name="farmaka"
+                                  id="farmakaFalse" value="false" />Οχι</label>
+
+                            </div>
+
+                            <div id="farmakaText" style="display:none;">
+                              <hr>
+                              <p>Αναφέρατε.</p>
+
+                              <table class="table border mb-0">
+                                <tr>
+                                  <td>Αιτία </td>
+                                  <td><input class="form-control" name="farmakaAitia" id="farmakaAitia" type="text">
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>Είδος</td>
+                                  <td> <input class="form-control" name="farmakaEidos" id="farmakaEidos" type=" text">
+                                  </td>
+                                </tr>
+                              </table>
+
+
+
+
+                            </div>
+
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+
+
+
+
+                    <tr class="align-middle">
+                      <td>
+                        <p>Έχετε να δηλώσετε οτιδήποτε άλλο που έχει σχέση με την υγεία σας;
+                        </p>
+                      </td>
+                      <td class="col-sm-4">
+                        <div class="col-12">
+                          <div class="form-check">
+                            <div>
+
+                              <label>
+                                <input type="checkbox" class="radio allo" value="true" name="allo"
+                                  id="alloTrue" />Ναι</label>
+                              <label>
+                                <input type="checkbox" class="radio allo" value="false" name="allo" id="alloFalse"
+                                  value="false" />False</label>
+
+                            </div>
+
+                            <div id="alloText" style="display:none;">
+                              <hr>
+                              <p>Αναφέρατε.</p>
+
+                              <textarea class="form-control" name="alloText" id="alloInput" cols="30"
+                                rows="10"></textarea>
+
+
+
+                            </div>
+
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+
+                  </tbody>
+                </table>
+
+
+
+
+
+              </form>
+
+<script>
+  function printForm() {
+  print()
+}
+</script>
+              <div class="col-12 pt-2">
+                {{!-- <button class="btn btn-primary" type="button" onClick="printForm()">Εκτύπωση
+                  Φόρμας</button> --}}
+
+                <button class="btn btn-primary" type="button" onClick="printForm()">Εκτύπωση
+                  Φόρμας</button>
+              </div>
+            </div>
+          </div>
+          <!-- Form -->
+
+
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+</div>
