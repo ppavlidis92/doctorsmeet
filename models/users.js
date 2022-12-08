@@ -28,12 +28,7 @@ let usersSchema = new Schema({
     require: true,
     enum: ["ADMIN", "DOCTOR", "SECRETARY"],
   },
-  has_Access: [
-    {
-      appname: { type: String },
-      access: { type: Boolean },
-    },
-  ],
+  has_Access: {type: Boolean},
   Address: {
     streetName: { type: String, require: true },
     streetNumber: { type: Number, require: true },

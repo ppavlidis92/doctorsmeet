@@ -62,6 +62,12 @@
           $('#smokerFalse').attr('checked', 'checked')
         }
 
+          if (data.gender=='woman') {
+          $('#genderWoman').attr('checked', 'checked')
+        } else if (data.gender == 'man') {
+          $('#genderMan').attr('checked', 'checked')
+        }
+
         if (data.alcohol) {
           $('#alcoholTrue').attr('checked', 'checked')
         } else if (data.alcohol == false) {
@@ -428,6 +434,16 @@
                       required="">
                   </div>
 
+
+                  <div class="col-md-4 mt-5">
+                    <p>Φύλο</p>
+                    <label>
+                      <input type="checkbox" class="radio historyCheckd" value="man" name="gender"
+                        id="genderMan" />'Αντρας</label>
+                    <label>
+                      <input type="checkbox" class="radio historyCheckd" value="woman" name="gender" id="genderWoman"
+                        value="false" />Γυναίκα</label>
+                  </div>
 
                 </div>
 

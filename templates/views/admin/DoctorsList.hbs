@@ -5,6 +5,7 @@
             <th>Όνομα</th>
             <th>Επίθετο</th>
             <th>Χρήστης</th>
+             <th>Πρόσβαση</th>
             {{!-- <th>Επεξεργασία</th>
             <th>Διαγραφή</th> --}}
 
@@ -13,10 +14,13 @@
     <tbody>
         {{#each data}}
         <tr>
-            <td>{{this.UserAmka}}</td>
+            <td><a href="/admin/viewDoctor/{{this.UserAmka}}"> {{this.UserAmka}}</a></td>
             <td>{{this.fname}}</td>
             <td>{{this.lname}}</td>
             <td>{{this.role}}</td>
+            <td>{{this.has_Access}}</td>
+
+
             {{!-- <td><button type="button" class="btn-close deleteuser" id="{{this._id}}" aria-label="Close"></button>
             </td> --}}
             {{!--

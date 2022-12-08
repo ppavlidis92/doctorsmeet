@@ -83,6 +83,10 @@ let patientSchema = new Schema({
         required: [true, 'To επίθετο είναι υποχρεωτικό']
     },
 
+    gender: {
+        type: String,     
+        trim: true
+    },
     email: {
         type: String,
         require: [true, 'To email είναι υποχρεωτικό'],

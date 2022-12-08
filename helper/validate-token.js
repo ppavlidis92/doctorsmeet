@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 let usersSchema = require("../models/users").usersSchema;
 
+global.hasAccess=false
 // middleware to validate token (rutas protegidas)
 const verifyToken = async (req, res, next) => {
 
@@ -28,6 +29,16 @@ const verifyToken = async (req, res, next) => {
             console.log(err);
             res.redirect("/login");
           } else {
+
+
+            if(hasAccess ==false){                  
+              hasAccess=data[0].has_Access
+                if (hasAccess== false) {
+                  res.redirect("/logout");                  
+                } 
+            }
+          
+
             next();
           }
         })

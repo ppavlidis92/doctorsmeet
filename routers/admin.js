@@ -269,6 +269,7 @@ router.post("/signup",verifyToken, async (req, res) => {
                   return;
                 }
               }
+              let has_Access = true;
               const user = new User({
                 _id: new mongoose.Types.ObjectId(),
                 fname,
@@ -280,7 +281,7 @@ router.post("/signup",verifyToken, async (req, res) => {
                 start_date,
                 UserAmka,
                 doctor,
-                Access_end_date,
+                Access_end_date,has_Access
               });
 
               user
@@ -325,4 +326,61 @@ router.post("/signup",verifyToken, async (req, res) => {
       });
   }
 });
+
+
+router.get("/viewDoctor/:id", verifyToken, async (req, res) => {
+
+
+  const _db = DBDatabase.useDb('AuthUsers')
+  const User = _db.model('User', usersSchema, 'user')
+  let docId =  (req.params.id) *1
+  const user = await User.find({UserAmka:docId}).exec()
+
+
+
+  res.render("admin/viewDoctor", {
+    title: "Προβολή Ασθενή",
+    user: user[0],
+    id: req.params.id,
+  });
+});
+
+
+
+
+router.get("/Access/:id/:text", verifyToken, async (req, res) => {
+
+console.log(req.params.id);
+console.log(req.params.text);
+  const _db = DBDatabase.useDb('AuthUsers')
+  const User = _db.model('User', usersSchema, 'user')
+  let DocId=req.params.id
+  let bool= req.params.text
+
+let doc = await User.findOneAndUpdate({UserAmka:DocId},{has_Access:bool},{new:true})
+
+
+
+  if (!doc) {    
+      res.render("admin/viewDoctor", {
+        title: "Προβολή Ασθενή",
+        error: true,
+        message:'Error Occured',
+        status: "warning",
+        user: doc,
+        id: req.params.id,
+      });
+  } else {
+    res.render("admin/viewDoctor", {
+      title: "Προβολή Ασθενή",
+      error: true,
+      message: 'Επιτυχής Ενημέρωση',
+      status: "success",
+      user: doc,
+      id: req.params.id,
+    });
+  }
+
+});
+
 module.exports = router;

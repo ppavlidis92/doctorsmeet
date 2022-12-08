@@ -460,3 +460,19 @@ function printForm() {
 //   fileDownload.click();
 //   document.body.removeChild(fileDownload);
 // }
+
+$( document ).ready(function() {
+  let text =$('#has_Access').val()
+ if (text== 'true') {
+  $('#grandAccess').prop('disabled', true)
+ } else  if (text== 'false'){
+  $('#deleteAccess').prop('disabled', true)
+ }
+});
+
+
+
+async function Access(id,boolean) {
+console.log('hi');
+  window.location.href= ("/admin/Access/"+id+'/'+boolean);
+}

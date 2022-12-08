@@ -165,7 +165,7 @@ router.post("/changePassword", verifyToken, async (req, res) => {
     } else if (hash) {
       const result = await User.updateOne({ email }, { password: hash });
       if (result) {
-        console.log(result);
+        
         res.render("changePassword", {
           title: "Αλλαγή Κωδικού",
           error: true,

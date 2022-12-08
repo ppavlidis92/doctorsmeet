@@ -10,11 +10,12 @@
             <th>Όνομα</th>
             <th>Επίθετο</th>
             <th>Ηλικία</th>
+            <th>Φύλο</th>
             <th>Κατάσταση Ιατρού</th>
 
             <th>Επεξεργασία</th>
             <th>Καταχώρηση Ιατρού</th>
-            <th>Προεπισκοπηση</th>
+            {{!-- <th>Προεπισκοπηση</th> --}}
             {{!-- <th>Διαγραφη</th> --}}
         </tr>
     </thead>
@@ -25,13 +26,23 @@
             <td>{{this.fname}}</td>
             <td>{{this.lname}}</td>
 
+
             <td>{{this.age_group}}</td>
+           
+
+             {{#if (equal this.gender 'man')}}
+                     <td>Άντρας </td>
+            {{else}}
+                     <td> Γυναίκα</td>
+            {{/if}}
+
+
 
             {{#if (equal this.completedByDoctor false)}}
-            <td><span></span><span class="circle" style="background:rgb(243, 8, 8);"></span> Μη ολοκληρωμένος</td>
+            <td><span class="circle" style="background:rgb(243, 8, 8);"></span> Μη ολοκληρωμένος</td>
 
             {{else}}
-            <td><span></span><span class="circle" style="background:rgb(78, 175, 54);"></span> Ολοκληρωμένος</td>
+            <td><span class="circle" style="background:rgb(78, 175, 54);"></span> Ολοκληρωμένος</td>
             {{/if}}
 
             {{!-- <td><button type="button" class="btn-close deleteuser" id="{{this._id}}" aria-label="Close"></button>
@@ -51,12 +62,12 @@
                         <span class="glyphicon glyphicon-edit"></span></button></a>
             </td>
 
-            <td>
+            {{!-- <td>
 
                 <a href="/edit/printPatient/{{this._id}}"><button type="button" class="btn btn-warning btn-sm"><img
                             src="/images/printer.png" style="width:20px;"></button></a>
 
-            </td>
+            </td> --}}
 
             {{!-- <td><button type="button" class="deleteuser btn btn-danger btn-sm" id="{{this._id}}">Διαγραφή <span
                         class="glyphicon glyphicon-minus"></span></button>

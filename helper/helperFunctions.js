@@ -1,3 +1,4 @@
+const async = require("hbs/lib/async");
 const jwt = require("jsonwebtoken");
 var usersSchema = require("../models/users").usersSchema;
 var emailSchema = require("../models/email").emailSchema;
@@ -7,6 +8,16 @@ const mongoose = require("mongoose");
 
 // const _db = DBDatabase.useDb('AuthUsers')
 // const User =_db.model('User',usersSchema,'user')
+
+
+const RunFunctionOnConnect = async() => {
+  const _db = DBDatabase.useDb('AuthUsers')
+const User =_db.model('User',usersSchema,'user')
+
+await User.updateMany({}, { $set:{ 
+ has_Access :true
+}})
+}
 
 
 function RedirectAuthUser(role, res) {
@@ -153,7 +164,7 @@ const getAgesCount = (patients, ageGroup) => {
 //name the functions you export
 module.exports = {
   RedirectAuthUser,
-  getGreeceTime,
+  getGreeceTime,RunFunctionOnConnect,
   getGreeceTimeOneYear,
   getDoctor,
   getMyMail,

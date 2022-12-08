@@ -1,0 +1,147 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card mb-4">
+      <div class="card-header"><strong>Προβολή Ιατρού </strong></div>
+
+      <div class="card-body">
+
+        {{!-- <p class="text-medium-emphasis small">Ενδεχομένος οδηγίες προς τον χρήστη που συμπληρώνει την φόρμα.</p>
+        --}}
+
+
+
+        </script>
+
+
+        <div class="example">
+
+          <!-- Form -->
+          <div class="tab-content rounded-bottom">
+            <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-789" id="UserFormEmail">
+
+
+              <form class="row g-3" action="/" method="POST" name="myForm">
+
+
+
+                <div class="row g-3">
+
+                  <div class="col-md-4">
+                    <label class="form-label" for="validationDefault01">Όνομα</label>
+                    <input class="form-control" name="fname" type="text" required="" value="{{user.fname}}" readonly>
+                  </div>
+
+                  <div class="col-md-4">
+                    <label class="form-label" for="validationDefault02">Επίθετο</label>
+                    <input class="form-control" name="lname" type="text" required="" value="{{user.lname}}" readonly>
+                  </div>
+
+
+
+
+                  <div class="col-md-4">
+                    <label class="form-label" for="UserAmka">AMKA</label>
+                    <input class="form-control" id="UserAmka" name="UserAmka" type="number" required=""
+                      value="{{user.UserAmka}}" readonly>
+                  </div>
+
+
+
+                  <div class="col-md-4">
+                    <label class="form-label" for="validationDefaultEmail">Email</label>
+                    <div class="input-group"><span class="input-group-text" id="inputGroupPrepend2">@</span>
+                      <input class="form-control" name="email" type="email" value="{{user.email}}" readonly>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <label class="form-label" for="validationMobile">Κινητό</label>
+                    <input class="form-control" name="mobile_number" type="number" value="{{user.mobile_number}}"
+                      required="" readonly>
+                  </div>
+
+                  <div class="col-md-4">
+                    <label class="form-label" for="validationMobile">Πρόσβαση</label>
+                    <input class="form-control" name="has_Access" id="has_Access" type="text" value="{{user.has_Access}}" required=""
+                      readonly>
+                  </div>
+
+                  <div class="col-md-4">
+                    <label class="form-label" for="validationMobile">Ημερομηνία Έναρξης Συνδρομής</label>
+                    <input class="form-control" name="start_date" type="text"
+                      value="{{formatTime user.start_date  'DD-MM-YYYY'}}" required="" readonly>
+                  </div>
+
+                  <div class="col-md-4">
+                    <label class="form-label" for="validationMobile">Ημερομηνία Λήξης Συνδρομής</label>
+                    <input class="form-control" name="Access_end_date:" type="text"
+                      value="{{formatTime user.Access_end_date  'DD-MM-YYYY'}}" required="" readonly>
+                  </div>
+
+
+                  <div class="row w-50 mt-3">
+
+
+                    <div class="col-sm pt-2">
+                     <button class="btn btn-success" id="grandAccess" type="button"  onclick="Access({{id}},true)"> Grand
+                          Access</button>
+                    </div>
+                    <div class="col-sm pt-2">
+                      <button class="btn btn-danger" id="deleteAccess" type="button" onclick="Access({{id}},false)">Delete Access</button>
+                    </div>
+
+                  </div>
+                </div>
+
+
+                {{!-- <div class="col-12 pt-2">
+                  <button class="btn btn-primary" type="submit">Υποβολή Φόρμας</button>
+                </div> --}}
+
+
+
+
+              </form>
+            </div>
+          </div>
+          <!-- Form -->
+
+
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  {{#if error}}
+  <script>
+    const myTimeout = setTimeout(myGreeting, 3000);
+
+    function myGreeting() {
+      $("#toast").hide()
+    }
+  </script>
+
+  <div class="justify-content-end mt-5" id="toast" style="display: flex;">
+
+    <div class="toast fade show bg-{{status}}" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <svg class="docs-placeholder-img rounded me-2" width="20" height="10" xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+
+        </svg><strong class="me-auto"></strong><small></small>
+        <button class="btn-close" id="btn-close" type="button" data-coreui-dismiss="toast" aria-label="Close"></button>
+      </div>
+
+      {{!-- MESSAGE --}}
+      <div class="toast-body">{{message}}.</div>
+    </div>
+  </div>
+  {{/if}}
+
+</div>

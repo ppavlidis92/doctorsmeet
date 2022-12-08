@@ -10,7 +10,7 @@ let patientSchema = require("../models/patient").patientSchema;
 const patientHelper = require("../helper/patient")
 
 router.use(bodyParser.urlencoded({ extended: true }));
-
+const { getMyMail,getDoctor,getAgesCount} = require("../helper/helperFunctions");
 
 /**
  * @method GET
@@ -420,7 +420,7 @@ router.post("/editPatient/:id", verifyToken, async (req, res) => {
     lname,
     email,
     UserAmka,
-    anaimia,
+    anaimia,gender,
     streetName,
     streetNumber,
     streetZip,
@@ -586,7 +586,7 @@ router.post("/editPatient/:id", verifyToken, async (req, res) => {
       sullipseis, apovoles, metavoliVarous,
       mobile_number, completedByDoctor, familyTable,
       checkup, egxeirish, allesNosilies,
-      SakxarodiDiabiti, home_number
+      SakxarodiDiabiti, home_number,gender
     },
     { new: true },
     function (err, patient) {

@@ -13,9 +13,9 @@ const verifyToken = require("../helper/validate-token");
 const jwt = require("jsonwebtoken");
 var moment = require('moment');
 
+const { RunFunctionOnConnect} = require("../helper/helperFunctions");
 
-
-
+//
 
 //DB connect
 const mongoURI = process.env.MONGODB_URI;
@@ -24,6 +24,7 @@ global.DBDatabase;
 try {
   DBDatabase = mongoose.createConnection(  mongoURI,  { useNewUrlParser: true, useUnifiedTopology: true })
   console.log("Connected");
+ // RunFunctionOnConnect()
 } catch (error) {
   console.log('Connection Db '+error.message);
 }

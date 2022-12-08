@@ -64,6 +64,7 @@ router.post("/AddUser", verifyToken, async (req, res) => {
     streetNumber,
     streetZip,
     RepeatPassword,
+
   } = req.body;
 
   let Address = {
@@ -134,7 +135,7 @@ router.post("/AddUser", verifyToken, async (req, res) => {
               });
               return;
             }
-
+           let has_Access =true;
             const user = new User({
               _id: new mongoose.Types.ObjectId(),
               fname,
@@ -150,7 +151,7 @@ router.post("/AddUser", verifyToken, async (req, res) => {
               Access_end_date,
               start_date,
               Access_end_date,
-              mobile_number,
+              mobile_number,has_Access
             });
 
             await user
