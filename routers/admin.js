@@ -341,6 +341,7 @@ router.get("/viewDoctor/:id", verifyToken, async (req, res) => {
   res.render("admin/viewDoctor", {
     title: "Προβολή Ασθενή",
     user: user[0],
+    admin: true,
     id: req.params.id,
   });
 });

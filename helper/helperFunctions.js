@@ -131,6 +131,32 @@ const getDoctor = (req) => {
   return doctor;
 };
 
+
+
+const getRole = (req) => {
+  let role = '';
+  let token;
+  try {
+    token = req.cookies.authToken;
+    // console.log("token "+token)
+  } catch (error) {
+    console.log(error);
+  }
+
+  if (token) {
+    jwt.verify(token, process.env.JWT_KEY, (err, decodedUser) => {
+      if (err) {
+        role = null;
+      } else {
+        // let email = decodedUser.email;
+        role = decodedUser.role;
+      }
+    });
+  }
+  return role;
+};
+
+
 const getMyMail = (req) => {
   let email;
   try {
@@ -164,6 +190,7 @@ const getAgesCount = (patients, ageGroup) => {
 //name the functions you export
 module.exports = {
   RedirectAuthUser,
+  getRole,
   getGreeceTime,RunFunctionOnConnect,
   getGreeceTimeOneYear,
   getDoctor,

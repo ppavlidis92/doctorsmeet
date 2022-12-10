@@ -1,7 +1,23 @@
 <div class="row">
   <div class="col-12">
     <div class="card mb-4">
-      <div class="card-header"><strong>Προβολή Ασθενή </strong></div>
+      <div class="card-header">
+        <div class="row">
+              <div class="col"> <strong>Προβολή Ασθενή </strong></div>
+              <div class="col"></div>
+              <div class="col mr-auto">
+                <div class="x">
+                  <a class="nav-link" href="/edit/editPatient/{{id}}" >
+                    <svg class="nav-icon icon x16 ">
+                      <use xlink:href="/vendors/@coreui/icons/svg/free.svg#cil-pencil" ></use>
+                    </svg>
+                    Επεξεργασία Χρήστη
+                  </a>
+                </div>
+          </div>
+        </div>
+      </div>
+      {{!-- --}}
 
       <div class="card-body">
 
@@ -29,13 +45,13 @@
                   <div class="col-md-4">
                     <label class="form-label" for="validationDefault01">Όνομα</label>
                     <input class="form-control" name="fname" type="text" placeholder="Μάριος" required=""
-                      value="{{user.fname}}">
+                      value="{{user.fname}}" readonly>
                   </div>
 
                   <div class="col-md-4">
                     <label class="form-label" for="validationDefault02">Επίθετο</label>
                     <input class="form-control" name="lname" type="text" placeholder="Παππάς" required=""
-                      value="{{user.lname}}">
+                      value="{{user.lname}}" readonly>
                   </div>
 
 
@@ -44,7 +60,7 @@
                   <div class="col-md-4">
                     <label class="form-label" for="DateOfBirth">Ημερομηνία Γέννησεως</label>
                     <input class="form-control" name="DateOfBirth" type="date" required=""
-                      value="{{formatTime user.DateOfBirth  'DD-MM-YYYY'}}">
+                      value="{{formatTime user.DateOfBirth  'YYYY-MM-DD'}}" readonly>
                   </div>
 
 
@@ -54,26 +70,26 @@
                   <div class="col-md-4">
                     <label class="form-label" for="streetName">Διεύθηνση</label>
                     <input class="form-control" id="streetName" name="streetName" type="text" required=""
-                      value="{{user.Address.streetName}}">
+                      value="{{user.Address.streetName}}" readonly>
                   </div>
 
                   <div class="col-md-3">
                     <label class="form-label" for="streetNumber">Αριθμός</label>
                     <input class="form-control" id="streetNumber" name="streetNumber" type="number" required=""
-                      value="{{user.Address.streetNumber}}">
+                      value="{{user.Address.streetNumber}}"> readonly
                   </div>
 
                   <div class="col-md-3">
                     <label class="form-label" for="streetZip">Τ.Κ.</label>
                     <input class="form-control" id="streetZip" name="streetZip" type="number" required=""
-                      value="{{user.Address.streetZip}}">
+                      value="{{user.Address.streetZip}}" readonly>
                   </div>
 
 
                   <div class="col-md-4">
                     <label class="form-label" for="identification">Στοιχεία Αστυνομικής Ταυτότητας</label>
                     <input class="form-control" id="identification" name="identification" type="text" required=""
-                      value="{{user.identification}}">
+                      value="{{user.identification}}" readonly>
                   </div>
 
 
@@ -81,14 +97,14 @@
                   <div class="col-md-4">
                     <label class="form-label" for="AsfalistikoTameio">Ασφαλιστικό Ταμείο</label>
                     <input class="form-control" id="AsfalistikoTameio" name="AsfalistikoTameio" type="text" required=""
-                      value="{{user.AsfalistikoTameio}}">
+                      value="{{user.AsfalistikoTameio}}" readonly>
                   </div>
 
 
                   <div class="col-md-4">
                     <label class="form-label" for="UserAmka">AMKA</label>
                     <input class="form-control" id="UserAmka" name="UserAmka" type="number" required=""
-                      value="{{user.UserAmka}}">
+                      value="{{user.UserAmka}}" readonly>
                   </div>
 
 
@@ -96,19 +112,19 @@
                   <div class="col-md-4">
                     <label class="form-label" for="validationDefaultEmail">Email</label>
                     <div class="input-group"><span class="input-group-text" id="inputGroupPrepend2">@</span>
-                      <input class="form-control" name="email" type="email" value="{{user.email}}">
+                      <input class="form-control" name="email" type="email" value="{{user.email}}" readonly>
                     </div>
                   </div>
 
                   <div class="col-md-4">
                     <label class="form-label" for="validationMobile">Κινητό</label>
                     <input class="form-control" name="mobile_number" type="number" value="{{user.mobile_number}}"
-                      required="">
+                      required="" readonly>
                   </div>
                   <div class="col-md-4">
                     <label class="form-label" for="validationMobile">Σταθερό</label>
                     <input class="form-control" name="home_number" type="number" value="{{user.home_number}}"
-                      required="">
+                      required="" readonly>
                   </div>
 
 
@@ -142,7 +158,7 @@
                       {{#each user.PatientVisit}}
                       <tr>
 
-                        <td>{{formatTime this.dateVisit  'YYYY-MM-DD'}}</td>
+                        <td>{{formatTime this.dateVisit 'YYYY-MM-DD'}}</td>
                         <td>{{this.symptoms}}</td>
                         <td>{{this.Gnomateush}}</td>
                         <td>{{this.Farmaka}}</td>

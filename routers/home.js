@@ -16,7 +16,7 @@ let emailSchema = require("../models/email").emailSchema;
 
 
 //------HELPERS -------/
-const { getMyMail,getDoctor,getAgesCount} = require("../helper/helperFunctions");
+const { getMyMail,getDoctor,getAgesCount,getRole} = require("../helper/helperFunctions");
 router.use(bodyParser.urlencoded({ extended: true }));
 
 
@@ -165,19 +165,32 @@ router.post("/changePassword", verifyToken, async (req, res) => {
     } else if (hash) {
       const result = await User.updateOne({ email }, { password: hash });
       if (result) {
+        let role = getRole(req)
+        if(role=='ADMIN'){
+          res.render("changePassword", {
+            title: "Αλλαγή Κωδικού",
+            error: true,
+            message: "Ο κωδικός άλλαξε",
+            status: "success",
+            admin:true
+          });
+          return;
+        }else{
+          res.render("changePassword", {
+            title: "Αλλαγή Κωδικού",
+            error: true,
+            message: "Ο κωδικός άλλαξε",
+            status: "success",
+          });
+          return;
+        }
         
-        res.render("changePassword", {
-          title: "Αλλαγή Κωδικού",
-          error: true,
-          message: "Ο κωδικός άλλαξε",
-          status: "success",
-        });
-        return;
+      
       } else {
         res.render("changePassword", {
           title: "Αλλαγή Κωδικού",
           error: true,
-          message: err.message,
+          message:'Αγνωστό Σφάλμα 1000.',
           status: "warning",
           signup: true,
         });
