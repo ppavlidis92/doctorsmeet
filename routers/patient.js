@@ -482,6 +482,7 @@ router.post("/AddEmailPatient", verifyToken, async (req, res) => {
 
         Email.findOneAndUpdate({ UrlId: url }, { isCompleted: true }, (err, email) => {
           if (err) {
+            console.log(err);
             res.render("405", {
               title: "Εγγραφή Ασθενή",
               login: true,
@@ -503,11 +504,12 @@ router.post("/AddEmailPatient", verifyToken, async (req, res) => {
       })
       .catch((err) => {
         console.log(err);
-        res.render("AddPatient", {
-          title: "Εισαγωγή Χρήστη",
+        res.render("405", {
+          title: "Εγγραφή Ασθενή",
+          login: true,
           error: true,
-          message: err.message,
-          status: "warning"
+          message: 'Αναφέρεται στον Ιατρό σας οτι αντιμετωπήσατε πρόβλημα στην σύνδεση σας',
+          status: "warning",
         });
       });
 
