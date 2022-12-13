@@ -12,9 +12,14 @@
             <th>Ηλικία</th>
             <th>Φύλο</th>
             <th>Κατάσταση Ιατρού</th>
-
-            <th>Επεξεργασία</th>
-            <th>Καταχώρηση Ιατρού</th>
+            <th>Καρδία</th>
+            <th>Λοιμώδες Νοσήματα </th>
+            <th>Σακχαρώδη διαβήτης</th>
+            <th>Κακοήθεια</th>
+            
+            
+            {{!-- <th>Επεξεργασία</th>
+            <th>Καταχώρηση Ιατρού</th> --}}
             {{!-- <th>Προεπισκοπηση</th> --}}
             {{!-- <th>Διαγραφη</th> --}}
         </tr>
@@ -47,14 +52,64 @@
             <td><span class="circle" style="background:rgb(78, 175, 54);"></span> Ολοκληρωμένος</td>
             {{/if}}
 
+
+            {{!-- KYKLOFORIAKO //KARDIA --}}
+                    
+                    {{#if (equal this.kukloforiako false)}}
+                            <td> Όχι</td>
+                    {{else if  (equal this.kukloforiako true)}}
+                            <td> Ναι</td>
+                    {{else}}
+                            <td> -</td>
+                    {{/if}}
+
+             {{!-- KYKLOFORIAKO //KARDIA --}}
+
+
+              {{!-- covid //Λοιμώδες Νοσήματα --}}
+                    
+                    {{#if (equal this.covid.boolean false)}}
+                            <td> Όχι</td>
+                    {{else if  (equal this.covid.boolean true)}}
+                            <td> Ναι</td>
+                    {{else}}
+                            <td> -</td>
+                    {{/if}}
+
+             {{!-- KYKLOFORIAKO //KARDIA --}}
+
+              {{!-- sakxarodiDiabiti //Σακχαρώδη διαβήτης --}}
+                    
+                    {{#if (equal this.SakxarodiDiabiti.boolean false)}}
+                            <td> Όχι</td>
+                    {{else if  (equal this.SakxarodiDiabiti.boolean true)}}
+                            <td> Ναι</td>
+                    {{else}}
+                            <td> -</td>
+                    {{/if}}
+
+             {{!-- KYKLOFORIAKO //KARDIA --}}
+
+              {{!--karkinos //Κακοήθεια --}}
+                    
+                    {{#if (equal this.karkinos.boolean false)}}
+                            <td> Όχι</td>
+                    {{else if  (equal this.karkinos.boolean true)}}
+                            <td> Ναι</td>
+                    {{else}}
+                            <td> -</td>
+                    {{/if}}
+
+             {{!-- KYKLOFORIAKO //KARDIA --}}
+
             {{!-- <td><button type="button" class="btn-close deleteuser" id="{{this._id}}" aria-label="Close"></button>
             </td> --}}
             {{!--
             <td><button class=" deleteuser btn-close" id="{{this._id}}"></button></td> --}}
 
-            <td>
+            {{!-- <td>
                 <a href="/edit/editPatient/{{this._id}}"><button type="button" class="btn btn-warning btn-sm">Επεξεργασία
-                        <span class="glyphicon glyphicon-edit"></span></button></a>
+                        <use xlink:href="/vendors/@coreui/icons/svg/free.svg#cil-pencil" ></use> <span class="glyphicon glyphicon-edit"></span></button></a>
             </td>
 
             <td>
@@ -62,7 +117,7 @@
                         class="btn btn-info btn-sm">Καταχώρηση
                         Ιατρού
                         <span class="glyphicon glyphicon-edit"></span></button></a>
-            </td>
+            </td> --}}
 
             {{!-- <td>
 

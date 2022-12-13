@@ -3,18 +3,32 @@
     <div class="card mb-4">
       <div class="card-header">
         <div class="row">
-              <div class="col"> <strong>Προβολή Ασθενή </strong></div>
-              <div class="col"></div>
-              <div class="col mr-auto">
-                <div class="x">
-                  <a class="nav-link" href="/edit/editPatient/{{id}}" >
-                    <svg class="nav-icon icon x16 ">
-                      <use xlink:href="/vendors/@coreui/icons/svg/free.svg#cil-pencil" ></use>
-                    </svg>
-                    Επεξεργασία Χρήστη
+
+          <div class="col"> <strong>Προβολή Ασθενή </strong></div>
+
+          <div class="col-sm"></div>
+           <div class="col-sm"></div>
+        
+          <div class="col ">
+            <div class="x">
+                  <a href="/edit/editPatient/{{id}}">
+                      <button type="button" class="btn btn-warning btn-sm">Επεξεργασία
+                          <span class="glyphicon glyphicon-edit"></span>
+                      </button>
                   </a>
-                </div>
+            </div>
+
           </div>
+
+            <div class="col">
+                <a href="/edit/submitPatient/{{id}}">
+                  <button type="button" class="btn btn-info btn-sm">Καταχώρηση
+                    Ιατρού
+                    <span class="glyphicon glyphicon-edit"></span>
+                  </button>
+                </a>
+          </div>  
+
         </div>
       </div>
       {{!-- --}}

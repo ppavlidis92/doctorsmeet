@@ -164,6 +164,9 @@ let patientSchema = new Schema({
             trim: true
         }
     },
+    muoskeletiko: {
+        type: Boolean,
+    },
     annarotiki: {
         boolean: {
             type: Boolean,
@@ -452,9 +455,7 @@ let patientSchema = new Schema({
         diadikasiaOura: {
             type: String
         },
-        blabhMuoskeletiko: {
-            type: String
-        },
+       
         diogkoshThiroeidi: {
             type: String
         },

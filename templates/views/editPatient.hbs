@@ -82,6 +82,20 @@
           $('#armyTextInput').val(data.army.text)
         }
 
+
+        if (data.karkinos.boolean) {
+          $('#karkinosTrue').attr('checked', 'checked')
+            $('#karkinosText').show()
+          $('#karkinosTextInput').val(data.karkinos.text)
+        } else if (data.karkinos.boolean == false) {
+          $('#karkinosFalse').attr('checked', 'checked')
+        
+        }
+
+
+
+
+
         if (data.annarotiki.boolean) {
           $('#annarotikiCheckdTrue').attr('checked', 'checked')
           $('#annarotikiText').show()
@@ -115,6 +129,13 @@
         } else if (data.gastrenteriko == false) {
           $('#gastrenterikoFalse').attr('checked', 'checked')
         }
+
+        if (data.eminopafsi) {
+          $('#eminopafsiTrue').attr('checked', 'checked')
+        } else if (data.eminopafsi == false) {
+          $('#eminopafsiFalse').attr('checked', 'checked')
+        }
+        
 
         if (data.kukloforiako) {
           $('#kukloforiakoTrue').attr('checked', 'checked')
@@ -155,7 +176,7 @@
           $('#alergiaCheckdTrue').attr('checked', 'checked')
           $('#alergiaText').show()
           $('#alergiaTextInput').val(data.alergia.text)
-        } else if (data.anaimia.boolean == false) {
+        } else if (data.alergia.boolean == false) {
           $('#alergiaCheckdFalse').attr('checked', 'checked')
         }
 
@@ -734,10 +755,10 @@
 
                               <label>
                                 <input type="checkbox" class="radio" value="true" name="eyesEarsDiscomfort"
-                                  id="eyesEarsDiscomfort" />Ναι</label>
+                                  id="eyesEarsDiscomfortTrue" />Ναι</label>
                               <label>
                                 <input type="checkbox" class="radio" value="false" name="eyesEarsDiscomfort"
-                                  id="eyesEarsDiscomfort" value="false" />Οχι</label>
+                                  id="eyesEarsDiscomfortFalse" value="false" />Οχι</label>
 
                             </div>
 
@@ -759,9 +780,9 @@
 
                               <label>
                                 <input type="checkbox" class="radio" value="true" name="illggous"
-                                  id="illggous" />Ναι</label>
+                                  id="illggousTrue" />Ναι</label>
                               <label>
-                                <input type="checkbox" class="radio" value="false" name="illggous" id="illggous"
+                                <input type="checkbox" class="radio" value="false" name="illggous" id="illggousFalse"
                                   value="false" />Οχι</label>
 
                             </div>
@@ -785,10 +806,10 @@
 
                               <label>
                                 <input type="checkbox" class="radio" value="true" name="gastrenteriko"
-                                  id="gastrenteriko" />Ναι</label>
+                                  id="gastrenterikoTrue" />Ναι</label>
                               <label>
                                 <input type="checkbox" class="radio" value="false" name="gastrenteriko"
-                                  id="gastrenteriko" value="false" />Οχι</label>
+                                  id="gastrenterikoFalse" value="false" />Οχι</label>
 
                             </div>
 
@@ -813,9 +834,9 @@
 
                               <label>
                                 <input type="checkbox" class="radio" value="true" name="anapnefstiko"
-                                  id="anapnefstiko" />Ναι</label>
+                                  id="anapnefstikoTrue" />Ναι</label>
                               <label>
-                                <input type="checkbox" class="radio" value="false" name="anapnefstiko" id="anapnefstiko"
+                                <input type="checkbox" class="radio" value="false" name="anapnefstiko" id="anapnefstikoFalse"
                                   value="false" />Οχι</label>
 
                             </div>
@@ -839,9 +860,9 @@
 
                               <label>
                                 <input type="checkbox" class="radio" value="true" name="kukloforiako"
-                                  id="kukloforiako" />Ναι</label>
+                                  id="kukloforiakoTrue" />Ναι</label>
                               <label>
-                                <input type="checkbox" class="radio" value="false" name="kukloforiako" id="kukloforiako"
+                                <input type="checkbox" class="radio" value="false" name="kukloforiako" id="kukloforiakoFalse"
                                   value="false" />Οχι</label>
 
                             </div>
@@ -867,9 +888,9 @@
 
                               <label>
                                 <input type="checkbox" class="radio" value="true" name="ouropoihtiko"
-                                  id="ouropoihtiko" />Ναι</label>
+                                  id="ouropoihtikoTrue" />Ναι</label>
                               <label>
-                                <input type="checkbox" class="radio" value="false" name="ouropoihtiko" id="ouropoihtiko"
+                                <input type="checkbox" class="radio" value="false" name="ouropoihtiko" id="ouropoihtikoFalse"
                                   value="false" />Οχι</label>
 
                             </div>
@@ -896,9 +917,9 @@
 
                               <label>
                                 <input type="checkbox" class="radio" value="true" name="muoskeletiko"
-                                  id="muoskeletiko" />Ναι</label>
+                                  id="muoskeletikoTrue" />Ναι</label>
                               <label>
-                                <input type="checkbox" class="radio" value="false" name="muoskeletiko" id="muoskeletiko"
+                                <input type="checkbox" class="radio" value="false" name="muoskeletiko" id="muoskeletikoFalse"
                                   value="false" />Οχι</label>
 
                             </div>
@@ -922,10 +943,10 @@
 
                               <label>
                                 <input type="checkbox" class="radio anaimiaCheckd" value="true" name="anaimia"
-                                  id="anaimiaCheckd" />Ναι</label>
+                                  id="anaimiaCheckdTrue" />Ναι</label>
                               <label>
                                 <input type="checkbox" class="radio anaimiaCheckd" value="false" name="anaimia"
-                                  id="anaimiaCheckd" value="false" />Οχι</label>
+                                  id="anaimiaCheckdFalse" value="false" />Οχι</label>
 
                               <div id="anaimiaText" style="display:none;">
                                 <hr>
@@ -957,10 +978,10 @@
 
                               <label>
                                 <input type="checkbox" class="radio alergiaCheckd" value="true" name="alergia"
-                                  id="alergiaCheckd" />Ναι</label>
+                                  id="alergiaCheckdTrue" />Ναι</label>
                               <label>
                                 <input type="checkbox" class="radio alergiaCheckd" value="false" name="alergia"
-                                  id="alergiaCheckd" value="false" />Οχι</label>
+                                  id="alergiaCheckdFalse" value="false" />Οχι</label>
 
                               <div id="alergiaText" style="display:none;">
                                 <hr>
@@ -1321,9 +1342,9 @@
 
                                 <label>
                                   <input type="checkbox" class="radio" value="true" name="eminopafsi"
-                                    id="eminopafsi" />Ναι</label>
+                                    id="eminopafsiTrue" />Ναι</label>
                                 <label>
-                                  <input type="checkbox" class="radio" value="false" name="eminopafsi" id="eminopafsi"
+                                  <input type="checkbox" class="radio" value="false" name="eminopafsi" id="eminopafsiFalse"
                                     value="false" />Οχι</label>
 
                               </div>
@@ -1348,9 +1369,9 @@
 
                               <label>
                                 <input type="checkbox" class="radio karkinos" value="true" name="karkinos"
-                                  id="karkinos" />Ναι</label>
+                                  id="karkinosTrue" />Ναι</label>
                               <label>
-                                <input type="checkbox" class="radio karkinos" value="false" name="karkinos" id="karkinos"
+                                <input type="checkbox" class="radio karkinos" value="false" name="karkinos" id="karkinosFalse"
                                   value="false" />Οχι</label>
 
                             </div>
@@ -1359,7 +1380,7 @@
                               <hr>
                               <p>Αναφέρατε.</p>
 
-                              <textarea class="form-control" name="karkinosText" cols="30" rows="10"></textarea>
+                              <textarea class="form-control" name="karkinosText"  id="karkinosTextInput" cols="30" rows="10"></textarea>
 
 
                             </div>

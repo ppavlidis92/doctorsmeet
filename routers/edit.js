@@ -259,7 +259,7 @@ router.post("/submitPatient/:id", verifyToken, async (req, res) => {
     leukoma,
     SakxaroOyra,
     diadikasiaOura,
-    blabhMuoskeletiko,
+    muoskeletiko,
     diogkoshThiroeidi,
     dermatotherapeia,
     leptomeriesAKat,
@@ -312,7 +312,7 @@ router.post("/submitPatient/:id", verifyToken, async (req, res) => {
   ekthesiIatrou.leukoma = leukoma
   ekthesiIatrou.SakxaroOyra = SakxaroOyra
   ekthesiIatrou.diadikasiaOura = diadikasiaOura
-  ekthesiIatrou.blabhMuoskeletiko = blabhMuoskeletiko
+  ekthesiIatrou.muoskeletiko = muoskeletiko
   ekthesiIatrou.diogkoshThiroeidi = diogkoshThiroeidi
   ekthesiIatrou.dermatotherapeia = dermatotherapeia
   ekthesiIatrou.proteinomenosGiaAsfaleia = (proteinomenosGiaAsfaleia == 'true') ? true : false
@@ -419,11 +419,14 @@ router.post("/editPatient/:id", verifyToken, async (req, res) => {
     fname,
     lname,
     email,
+    eminopafsi,
     UserAmka,
     anaimia,gender,
     streetName,
     streetNumber,
     streetZip,
+    karkinos,
+    karkinosText,
     mobile_number,
     identification,
     AsfalistikoTameio,
@@ -479,7 +482,7 @@ router.post("/editPatient/:id", verifyToken, async (req, res) => {
   };
 
 
-
+console.log(muoskeletiko)
   //doctor
   let doctor = {};
   let completedByDoctor = false
@@ -500,6 +503,11 @@ router.post("/editPatient/:id", verifyToken, async (req, res) => {
   let annarotikiObj = {}
   annarotikiObj = patientHelper.returnParamsObj(annarotikiObj, annarotiki, annarotikiTextInput)
 
+
+
+  //karkinos
+  let karkinosObj = {}
+  karkinosObj = patientHelper.returnParamsObj(karkinosObj, karkinos, karkinosText)
 
   //therapia
   let therapiaObj = {}
@@ -579,11 +587,13 @@ router.post("/editPatient/:id", verifyToken, async (req, res) => {
       army: armyObj,
       history: historyObj,
       therapia: therapiaObj,
+      karkinos: karkinosObj,
       anaimia: anaimiaObj,
       gunaikologikaProblimata: gunaikologikaProblimataObj,
       farmaka: farmakaObj,
       allo: alloObj,
       covid: covidObj,
+      eminopafsi,
       identification, muoskeletiko,
       AsfalistikoTameio, smoker, alcohol,
       eyesEarsDiscomfort, illggous, gastrenteriko,
