@@ -275,6 +275,48 @@ $(document).on("click", ".allo", function () {
 /////////////////   allo /////////////////
 
 
+////////////////   covid /////////////////
+$(document).on("click", ".covid", function () {
+  // in the handler, 'this' refers to the box clicked on
+  var value = $(this).val();
+  var $box = $(this);
+
+  if ($box.is(":checked")) {
+    if (value == "true") {
+      $("#covidText").show();
+    } else {
+      $("#covidText").hide();
+    }
+  } else {
+    if (value == "true") {
+      $("#covidText").hide();
+    }
+  }
+});
+/////////////////   covid /////////////////
+
+
+////////////////   karkinos /////////////////
+$(document).on("click", ".karkinos", function () {
+  // in the handler, 'this' refers to the box clicked on
+  var value = $(this).val();
+  var $box = $(this);
+
+  if ($box.is(":checked")) {
+    if (value == "true") {
+      $("#karkinosText").show();
+    } else {
+      $("#karkinosText").hide();
+    }
+  } else {
+    if (value == "true") {
+      $("#karkinosText").hide();
+    }
+  }
+});
+/////////////////   karkinos /////////////////
+
+
 ////////////////   checkup /////////////////
 $(document).on("click", "#checkup", function () {
   // in the handler, 'this' refers to the box clicked on

@@ -448,6 +448,7 @@ router.post("/editPatient/:id", verifyToken, async (req, res) => {
     anaimiaText,
     army,
     allo,
+    covid,
     alergiaText,
 
     traumatismoi,
@@ -466,6 +467,7 @@ router.post("/editPatient/:id", verifyToken, async (req, res) => {
     farmakaEidos,
     muoskeletiko,
     alloText,
+    covidText,
     DateOfBirth,
 
   } = req.body;
@@ -527,6 +529,10 @@ router.post("/editPatient/:id", verifyToken, async (req, res) => {
   let alloObj = {}
   alloObj = patientHelper.returnParamsObj(alloObj, allo, alloText)
 
+  //covid
+  let covidObj = {}
+  covidObj = patientHelper.returnParamsObj(covidObj, covid, covidText)
+
 
 
 
@@ -577,6 +583,7 @@ router.post("/editPatient/:id", verifyToken, async (req, res) => {
       gunaikologikaProblimata: gunaikologikaProblimataObj,
       farmaka: farmakaObj,
       allo: alloObj,
+      covid: covidObj,
       identification, muoskeletiko,
       AsfalistikoTameio, smoker, alcohol,
       eyesEarsDiscomfort, illggous, gastrenteriko,

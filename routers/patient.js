@@ -26,6 +26,7 @@ const mailHost = process.env.mailHost;
 router.use(bodyParser.urlencoded({ extended: true }));
 const { getGreeceTime, getGreeceTimeOneYear, getDoctor, getDoctorWithMail, getDoctorFullName
 } = require("../helper/helperFunctions");
+const { text } = require("body-parser");
 
 
 
@@ -91,6 +92,8 @@ router.post("/AddPatient", verifyToken, async (req, res) => {
     anaimiaText,
     army,
     allo,
+    covid,
+    karkinos,
     alergiaText,
 
     traumatismoi,
@@ -100,7 +103,7 @@ router.post("/AddPatient", verifyToken, async (req, res) => {
 
     egkuosText,
     annarotiki,
-    sullipseis,
+    eminopafsi,
     apovoles,
     history,
     metavoliVarous,
@@ -109,6 +112,8 @@ router.post("/AddPatient", verifyToken, async (req, res) => {
     farmakaEidos,
     muoskeletiko,
     alloText,
+    covidText,
+    karkinosText,
     DateOfBirth,
 
   } = req.body;
@@ -170,7 +175,13 @@ router.post("/AddPatient", verifyToken, async (req, res) => {
   let alloObj = {}
   alloObj = patientHelper.returnParamsObj(alloObj, allo, alloText)
 
+  //covid
+  let covidObj = {}
+  covidObj = patientHelper.returnParamsObj(covidObj, covid, covidText)
 
+  //karkinos
+  let karkinosObj = {}
+  karkinosObj = patientHelper.returnParamsObj(karkinosObj, karkinos, karkinosText)
 
 
   let familyTable = [];
@@ -216,13 +227,15 @@ router.post("/AddPatient", verifyToken, async (req, res) => {
     gunaikologikaProblimata: gunaikologikaProblimataObj,
     farmaka: farmakaObj,
     allo: alloObj,
+    covid: covidObj,
+    karkinos: karkinosObj,
     identification, muoskeletiko,
     AsfalistikoTameio, smoker, alcohol,
     eyesEarsDiscomfort, illggous, gastrenteriko,
     anapnefstiko, kukloforiako, ouropoihtiko,
     traumatismoi, osteosinthesi,
     egkuos: egkuosObj,
-    sullipseis, apovoles, metavoliVarous,
+    eminopafsi, apovoles, metavoliVarous,
     mobile_number, completedByDoctor, familyTable,
     checkup, egxeirish, allesNosilies,
     SakxarodiDiabiti, home_number, status
@@ -270,7 +283,7 @@ router.post("/AddPatient", verifyToken, async (req, res) => {
  * @param  {} async(req
  * @param  {} res
  */
-router.post("/AddEmailPatient", verifyToken, async (req, res) => {
+router.post("/AddEmailPatient", async (req, res) => {
 
 
  
@@ -314,6 +327,8 @@ router.post("/AddEmailPatient", verifyToken, async (req, res) => {
     anaimiaText,
     army,
     allo,
+    covid,
+    karkinos,
     alergiaText,
 
     traumatismoi,
@@ -323,7 +338,7 @@ router.post("/AddEmailPatient", verifyToken, async (req, res) => {
 
     egkuosText,
     annarotiki,
-    sullipseis,
+    eminopafsi,
     apovoles,
     history,
     metavoliVarous,
@@ -332,6 +347,8 @@ router.post("/AddEmailPatient", verifyToken, async (req, res) => {
     farmakaEidos,
     muoskeletiko,
     alloText,
+    covidText,
+    karkinosText,
     DateOfBirth,
 
 
@@ -398,7 +415,13 @@ router.post("/AddEmailPatient", verifyToken, async (req, res) => {
   let alloObj = {}
   alloObj = patientHelper.returnParamsObj(alloObj, allo, alloText)
 
+  //covid
+  let covidObj = {}
+  covidObj = patientHelper.returnParamsObj(covidObj, covid, covidText)
 
+  //karkinos
+  let karkinosObj = {}
+  karkinosObj = patientHelper.returnParamsObj(karkinosObj, karkinos, karkinosText)
 
 
   let familyTable = [];
@@ -444,13 +467,15 @@ router.post("/AddEmailPatient", verifyToken, async (req, res) => {
     gunaikologikaProblimata: gunaikologikaProblimataObj,
     farmaka: farmakaObj,
     allo: alloObj,
+    covid: covidObj,
+    karkinos: karkinosObj,
     identification, muoskeletiko,
     AsfalistikoTameio, smoker, alcohol,
     eyesEarsDiscomfort, illggous, gastrenteriko,
     anapnefstiko, kukloforiako, ouropoihtiko,gender,
     traumatismoi, osteosinthesi,
     egkuos: egkuosObj,
-    sullipseis, apovoles, metavoliVarous,
+    eminopafsi, apovoles, metavoliVarous,
     mobile_number, completedByDoctor, familyTable,
     checkup, egxeirish, allesNosilies,
     SakxarodiDiabiti, home_number, status
@@ -482,7 +507,6 @@ router.post("/AddEmailPatient", verifyToken, async (req, res) => {
 
         Email.findOneAndUpdate({ UrlId: url }, { isCompleted: true }, (err, email) => {
           if (err) {
-            console.log(err);
             res.render("405", {
               title: "Εγγραφή Ασθενή",
               login: true,
@@ -504,12 +528,11 @@ router.post("/AddEmailPatient", verifyToken, async (req, res) => {
       })
       .catch((err) => {
         console.log(err);
-        res.render("405", {
-          title: "Εγγραφή Ασθενή",
-          login: true,
+        res.render("AddPatient", {
+          title: "Εισαγωγή Χρήστη",
           error: true,
-          message: 'Αναφέρεται στον Ιατρό σας οτι αντιμετωπήσατε πρόβλημα στην σύνδεση σας',
-          status: "warning",
+          message: err.message,
+          status: "warning"
         });
       });
 
@@ -545,7 +568,7 @@ router.post("/SendPatientEmailForm", verifyToken, async (req, res) => {
 
   const uuid = crypto.randomUUID()
   let userUrl = ApplicationUrl + 'email/emailAdd/' + uuid
-  let Text = ' Καλησπέρα σας,  Παρακαλώ όπως επισκεφτείτε τον παρακάτω σύνδεσμο, ' + userUrl + ' προκειμένου να γίνει η εγγραφή σας στην πλατφόρα του Ιατρού σας (Δρ. ' + doctorFullName + ')'
+  let Text = 'Αγαπητέ κύριε/κυρία,\n\n Σας ευχαριστούμε για την εγγραφή σας στην πλατφόρμα του προσωπικού γιατρού κ. Γεράσιμου Βουδούρη,\n\nΠριν το ραντεβού σας με τον γιατρό είναι σημαντικό να καταγράψουμε το ιατρικό σας ιστορικό. Με αυτό τον τρόπο δίνεται η δυνατότητα στον γιατρό να αποκομίσει όλες τις χρήσιμες πληροφορίες, που θα τον προσανατολίσουν κατ αρχάς, ως πρός την διάγνωση και την επίλυση του εκάστοτε προβλήματος σας.\nΗ συμπλήρωση του ιστορικού είναι απλή και δεν θα σας πάρει παραπάνω από 5 λεπτά. Την φόρμα θα βρείτε στον σύνδεσμο: ' + userUrl + '\n Συμπληρώστε τα στοιχεία που εμφανίζονται και πατήστε υποβολή. Με αυτό τον τρόπο όλα τα στοιχεία σας θα καταχωρηθούν αυτόματα στον ιατρικό σας φάκελο στο σύστημα του ιατρείου όπως προβλέπεται από το νόμο.\n\nΓια την προστασία των δεδομένων σας ο σύνδεσμος παραμένει ενεργός μία φορά αφότου τον πατήσετε.\nΜην διστάσετε να επικοινωνήσετε μαζί μας για οποιαδήποτε συμπληρωματική πληροφορία\n\nΠαρακαλώ μην απαντήσετε στο συγκεκριμένο email.\n\nΙατρείο κ. Γεράσιμου Βουδούρη\n Βασιλέως Γεωργίου & Τριγλίας, Ραφήνα\nemail: iatriovoudouris@gmail.com\nτηλ. επικ. : 2294023202'
 
   console.log(Text);
 
@@ -574,7 +597,7 @@ router.post("/SendPatientEmailForm", verifyToken, async (req, res) => {
     );
 
     var mailOptions = {
-      from: UserMail,
+      from: 'iatriovoudouris@iatriovoudouris.gr',
       to: newUserEmail,
       subject: Subject,
       text: Text

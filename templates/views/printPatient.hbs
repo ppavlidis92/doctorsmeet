@@ -288,7 +288,15 @@
           $('#farmakaFalse').attr('checked', 'checked')
         }
 
+        if (data.covid.boolean) {
+          $('#covidTrue').attr('checked', 'checked')
+          $('#covidText').show()
+          $("#covidInput").val(data.covid.text)
 
+
+        } else if (data.covid.boolean == false) {
+          $('#covidFalse').attr('checked', 'checked')
+        }
 
 
         if (data.allo.boolean) {
@@ -1439,6 +1447,39 @@
                     </tr>
 
 
+                    <tr class="align-middle">
+                      <td>
+                        <p>Ασθενήσατε από λοιμώδες νόσημα; (covid,γρίπη)
+                        </p>
+                      </td>
+                      <td class="col-sm-4">
+                        <div class="col-12">
+                          <div class="form-check">
+                            <div>
+
+                              <label>
+                                <input type="checkbox" class="radio covid" value="true" name="covid"
+                                  id="covid" />Ναι</label>
+                              <label>
+                                <input type="checkbox" class="radio covid" value="false" name="covid" id="covid"
+                                  value="false" />Οχι</label>
+
+                            </div>
+
+                            <div id="covidText" style="display:none;">
+                              <hr>
+                              <p>Αναφέρατε.</p>
+
+                              <textarea class="form-control" name="covidText" cols="30" rows="10"></textarea>
+
+
+                            </div>
+                            </div>
+
+                          </div>
+                      </td>
+                    </tr>
+
 
 
                     <tr class="align-middle">
@@ -1456,7 +1497,7 @@
                                   id="alloTrue" />Ναι</label>
                               <label>
                                 <input type="checkbox" class="radio allo" value="false" name="allo" id="alloFalse"
-                                  value="false" />False</label>
+                                  value="false" />Οχι</label>
 
                             </div>
 

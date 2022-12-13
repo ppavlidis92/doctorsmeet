@@ -274,10 +274,6 @@ let patientSchema = new Schema({
             trim: true
         }
     },
-    sullipseis: {
-        type: String,
-        trim: true
-    },
     apovoles: {
         type: String,
         trim: true
@@ -318,7 +314,31 @@ let patientSchema = new Schema({
             trim: true
         }
     },
+    // 13/12/2022
+    covid: {
+        boolean: {
+            type: Boolean,
+            require: true,
+        },
+        text: {
+            type: String,
+            trim: true
+        }
+    },
+    karkinos: {
+        boolean: {
+            type: Boolean,
+            require: true,
+        },
+        text: {
+            type: String,
+            trim: true
+        }
+    },
+    eminopafsi: {
+        type: Boolean,
 
+    },//13/12/2022
     status: {
         type: String,
         enum: ['EXIST', 'DELETED']
