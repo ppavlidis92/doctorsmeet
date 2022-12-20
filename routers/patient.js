@@ -93,11 +93,11 @@ router.post("/AddPatient", verifyToken, async (req, res) => {
     army,
     allo,
     covid,
-    karkinos,
+    karkinosBoolean,
     alergiaText,
 
     traumatismoi,
-    osteosinthesi,
+    osteosinthesiText,osteosinthesiBoolean,
 
     gunaikologikaProblimataText,
 
@@ -113,8 +113,19 @@ router.post("/AddPatient", verifyToken, async (req, res) => {
     muoskeletiko,
     alloText,
     covidText,
-    karkinosText,
+
     DateOfBirth,
+    karkinosOrgan,
+    karkinosTreatment,
+    kardiaText,
+    kardiaBoolean,
+    dermatopatheiaBoolean,
+    dermatopatheiaText,
+    apeikonistikoBoolean,
+    apeikonistikoWhich,
+    apeikonistikoWhen,
+    apeikonistikoMedicalΟpinion
+
 
   } = req.body;
 
@@ -179,11 +190,6 @@ router.post("/AddPatient", verifyToken, async (req, res) => {
   let covidObj = {}
   covidObj = patientHelper.returnParamsObj(covidObj, covid, covidText)
 
-  //karkinos
-  let karkinosObj = {}
-  karkinosObj = patientHelper.returnParamsObj(karkinosObj, karkinos, karkinosText)
-
-
   let familyTable = [];
   familyTable = patientHelper.CreateFamilyTable(req.body)
 
@@ -205,6 +211,36 @@ router.post("/AddPatient", verifyToken, async (req, res) => {
   SakxarodiDiabiti = patientHelper.CreateSakxarodiDiabiti(req.body)
 
 
+   //karkinos
+  let karkinos ={}
+  karkinos.boolean= karkinosBoolean
+  karkinos.organ= karkinosOrgan
+  karkinos.treatment= karkinosTreatment
+
+  //kardia
+  let kardia={}
+  kardia =  patientHelper.returnParamsObj(kardia, kardiaBoolean, kardiaText)
+  
+
+  //dermatopatheia
+  let dermatopatheia={}
+  dermatopatheia =  patientHelper.returnParamsObj(dermatopatheia, dermatopatheiaBoolean, dermatopatheiaText)
+  
+  
+  //osteosinthesi
+  let osteosinthesi={}
+  osteosinthesi =  patientHelper.returnParamsObj(osteosinthesi, osteosinthesiBoolean, osteosinthesiText)
+  
+
+
+   //apeikonistiko
+   let apeikonistiko ={}
+   apeikonistiko.boolean= apeikonistikoBoolean
+   apeikonistiko.which= apeikonistikoWhich
+   apeikonistiko.when= apeikonistikoWhen
+   apeikonistiko.medicalΟpinion= apeikonistikoMedicalΟpinion
+ 
+ 
 
 
   let age = new Date().getFullYear() - (new Date(DateOfBirth)).getFullYear()
@@ -228,7 +264,10 @@ router.post("/AddPatient", verifyToken, async (req, res) => {
     farmaka: farmakaObj,
     allo: alloObj,
     covid: covidObj,
-    karkinos: karkinosObj,
+    karkinos,
+    kardia,
+    apeikonistiko,
+    dermatopatheia,
     identification, muoskeletiko,
     AsfalistikoTameio, smoker, alcohol,
     eyesEarsDiscomfort, illggous, gastrenteriko,
@@ -328,11 +367,11 @@ router.post("/AddEmailPatient", async (req, res) => {
     army,
     allo,
     covid,
-    karkinos,
+    karkinosBoolean,
     alergiaText,
 
     traumatismoi,
-    osteosinthesi,
+    osteosinthesiText,osteosinthesiBoolean,
 
     gunaikologikaProblimataText,
 
@@ -350,6 +389,16 @@ router.post("/AddEmailPatient", async (req, res) => {
     covidText,
     karkinosText,
     DateOfBirth,
+    karkinosOrgan,
+    karkinosTreatment,
+    kardiaText,
+    kardiaBoolean,
+    dermatopatheiaBoolean,
+    dermatopatheiaText,
+    apeikonistikoBoolean,
+    apeikonistikoWhich,
+    apeikonistikoWhen,
+    apeikonistikoMedicalΟpinion
 
 
   } = req.body;
@@ -419,10 +468,6 @@ router.post("/AddEmailPatient", async (req, res) => {
   let covidObj = {}
   covidObj = patientHelper.returnParamsObj(covidObj, covid, covidText)
 
-  //karkinos
-  let karkinosObj = {}
-  karkinosObj = patientHelper.returnParamsObj(karkinosObj, karkinos, karkinosText)
-
 
   let familyTable = [];
   familyTable = patientHelper.CreateFamilyTable(req.body)
@@ -443,6 +488,35 @@ router.post("/AddEmailPatient", async (req, res) => {
   //SakxarodiDiabiti
   let SakxarodiDiabiti = {}
   SakxarodiDiabiti = patientHelper.CreateSakxarodiDiabiti(req.body)
+
+ //karkinos
+ let karkinos ={}
+ karkinos.boolean= karkinosBoolean
+ karkinos.organ= karkinosOrgan
+ karkinos.treatment= karkinosTreatment
+
+ //kardia
+ let kardia={}
+ kardia =  patientHelper.returnParamsObj(kardia, kardiaBoolean, kardiaText)
+
+
+ //dermatopatheia
+ let dermatopatheia={}
+ dermatopatheia =  patientHelper.returnParamsObj(dermatopatheia, dermatopatheiaBoolean, dermatopatheiaText)
+
+
+ //osteosinthesi
+ let osteosinthesi={}
+ osteosinthesi =  patientHelper.returnParamsObj(osteosinthesi, osteosinthesiBoolean, osteosinthesiText)
+
+
+
+  //apeikonistiko
+  let apeikonistiko ={}
+  apeikonistiko.boolean= apeikonistikoBoolean
+  apeikonistiko.which= apeikonistikoWhich
+  apeikonistiko.when= apeikonistikoWhen
+  apeikonistiko.medicalΟpinion= apeikonistikoMedicalΟpinion
 
 
 
@@ -468,7 +542,10 @@ router.post("/AddEmailPatient", async (req, res) => {
     farmaka: farmakaObj,
     allo: alloObj,
     covid: covidObj,
-    karkinos: karkinosObj,
+    karkinos,
+    kardia,
+    apeikonistiko,
+    dermatopatheia,
     identification, muoskeletiko,
     AsfalistikoTameio, smoker, alcohol,
     eyesEarsDiscomfort, illggous, gastrenteriko,

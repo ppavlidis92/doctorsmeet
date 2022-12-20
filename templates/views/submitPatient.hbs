@@ -195,13 +195,10 @@
                                 </div> --}}
 
 
-                                <hr>
 
 
                                 <div class="col-md-4">
-                                    <label class="form-label" for="anomaliesDiaplash"> Υπάρχουν ανωμαλίες στη διάπλαση,
-                                        διογκωμένοι
-                                        αδένες κ.λ.π.;
+                                    <label class="form-label" for="anomaliesDiaplash"> Υπάρχουν ανωμαλίες στη διάπλαση;
                                     </label>
                                     <input class="form-control" id="anomaliesDiaplash" name="anomaliesDiaplash"
                                         type="text"   />
@@ -209,9 +206,9 @@
 
                                 <hr>
 
-                                <div class="col-md-10">
+                               
 
-
+                                <h4>Έλεγχος καρδιάς:</h4>
                                     <div class="col-md-4">
                                         <label class="form-label" for="sfikseis"> Σφύξεις:
                                         </label>
@@ -225,12 +222,53 @@
                                         <input class="form-control" id="sfikseisRithmos" name="sfikseisRithmos"
                                             type="text"   />
                                     </div>
-                                </div>
+                              
+{{!-- NEW TABLE -  PAVLOS --}}
 
+    <div class="table-responsive">
+		<div class="col-md-12 column">
+			<table class="table border mb-0" id="egxeiriseisTable">
+				<thead>
+					<tr>
+						<th class="text-center">
+							
+						</th>
+						<th class="text-center">
+							<b>Α' ΜΕΤΡΗΣΗ</b>
+						</th>
+						<th class="text-center">
+							<b>B' ΜΕΤΡΗΣΗ</b>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr id='addr0'>
+						<td>Συστολική:</td>
+						<td>
+						<input type="text" name='sustolikiA' id="sustolikiA"  class="form-control"/>
+						</td>
+						<td>
+						<input type="text" name='sustolikiB' class="form-control"/>
+						</td>
+					</tr>
+                    <tr></tr>
+                    <tr>
+						<td>Διαστολική:</td>
+						<td>
+						<input type="text" name="diastolikiA" id="diastolikiA" class="form-control"/>
+						</td>
+						<td>
+						<input type="text" name='diastolikiB' id="diastolikiB" class="form-control"/>
+						</td>
+					</tr>
+                    <tr id=''></tr>
+				</tbody>
+			</table>
+		</div>
+    </div>
 
-
-
-
+{{!-- NEW TABLE END -  PAVLOS --}}
+{{!-- 
                                 <div>
                                     <div class="table-responsive">
 
@@ -269,8 +307,6 @@
 
                                         </table>
 
-                                        {{!-- <button type="button" class="btn btn-info" id="AddTableRow">Εισαγωγή
-                                            γραμμών</button> --}}
                                     </div>
 
                                     <br>
@@ -315,12 +351,12 @@
                                     </div>
 
                                 </div>
-
+ --}} 
 
                                 <br>
                                 <hr>
 
-                                <div class="col-md-4">
+                                {{!-- <div class="col-md-4">
                                     <label class="form-label" for="akroasiKardias"> Ακρόαση καρδιάς: (συχνότητα,
                                         φυσήματα κ.λ.π.)
 
@@ -348,7 +384,7 @@
                                         <input class="form-control" id="kardiakiOsiEanOxi" name="kardiakiOsiEanOxi"
                                             type="text"   />
                                     </div>
-                                </div>
+                                </div> --}}
 
                                 <div class="row">
 
@@ -383,11 +419,11 @@
                                 </div>
 
 
-                                <div class="col-md-4">
+                                {{!-- <div class="col-md-4">
                                     <label class="form-label" for="Dispnoia"> Υπάρχει δύσπνοια;
                                     </label>
                                     <input class="form-control" id="Dispnoia" name="Dispnoia" type="text"   />
-                                </div>
+                                </div> --}}
 
 
                                 <hr>
@@ -430,9 +466,8 @@
                                 </div>
 
 
-                                <hr>
 
-                                <div class="col-md-4">
+                                <div class="col-md-5">
                                     <label class="form-label" for="flevikiKukloforia"> Έλεγχος φλεβικής κυκλοφορίας των
                                         κάτω άκρων: (κιρσοί, κ.λ.π.)
 
@@ -446,7 +481,7 @@
                                 <h4>Έλεγχος νευρικού συστήματος:</h4>
                                 <div class="col-md-4">
                                     <label class="form-label" for="neurikoSusthma">
-                                        Υπάρχουν σημεία νόσου εγκεφάλου, νωτιαίου μυελού ή νεύρων;
+                                        Eξέταση ΚΝΣ;
 
                                     </label>
                                     <input class="form-control" id="neurikoSusthma" name="neurikoSusthma" type="text"
@@ -454,9 +489,8 @@
                                 </div>
 
                                 <div class="col-md-4">
-                                    <label class="form-label" for="Antanaklastika"> Τα αντανακλαστικά της κόρης και
-                                        επιγονατίδας είναι φυσιολογικά;
-
+                                    <label class="form-label" for="Antanaklastika">Αντανακλαστικά κόρης και
+                                        επιγονατίδας
                                     </label>
                                     <input class="form-control" id="Antanaklastika" name="Antanaklastika" type="text"
                                           />
@@ -519,9 +553,7 @@
                                 <hr>
 
                                 <div class="col-md-4">
-                                    <label class="form-label" for="blabhMuoskeletiko">Υπάρχει εμφανής βλάβη από το
-                                        μυοσκελετικό σύστημα; (Δυσχέρεια βαδλισεως, εμφανής οσφυαλγία, παραμορφώσεις
-                                        κ.λ.π.)
+                                    <label class="form-label" for="blabhMuoskeletiko">Μυοσκελετικό σύστημα (Δυσχέρεια βαδλισεως, εμφανής οσφυαλγία, παραμορφώσεις κ.λ.π.)
 
                                     </label>
                                     <input class="form-control" id="blabhMuoskeletiko" name="blabhMuoskeletiko"
@@ -536,10 +568,7 @@
                                 <hr>
 
                                 <div class="col-md-4">
-                                    <label class="form-label" for="diogkoshThiroeidi">Υπάρχει διόγκωση του θυροειδούς ή
-                                        εξώφθαλμος;
-
-
+                                    <label class="form-label" for="diogkoshThiroeidi">Εξέταση θυροειδούς
                                     </label>
                                     <input class="form-control" id="diogkoshThiroeidi" name="diogkoshThiroeidi"
                                         type="text"   />
@@ -551,10 +580,9 @@
 
 
 
-                                <hr>
 
                                 <div class="col-md-4">
-                                    <label class="form-label" for="dermatotherapeia">Υπάρχει εμφανής δερματοπάθεια;
+                                    <label class="form-label" for="dermatotherapeia">Παθήσεις δέρματος
 
                                     </label>
                                     <input class="form-control" id="dermatotherapeia" name="dermatotherapeia"
@@ -566,7 +594,7 @@
 
                                 <div>                               
                                     <div class="col-md-6 mb-3">                                       
-                                        <h2><u> ΣΥΜΠΕΡΑΣΜΑTA ΙΑΤΡΟΥ</u> </h2>
+                                        <h2> ΣΥΜΠΕΡΑΣΜΑTA ΙΑΤΡΟΥ </h2>
                                     </div>
 
 

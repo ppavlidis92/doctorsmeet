@@ -242,10 +242,7 @@ let patientSchema = new Schema({
         type: String,
         trim: true
     },
-    osteosinthesi: {
-        type: Boolean,
-        require: true,
-    },
+   
     allesNosilies: [{
         type: String,
         trim: true
@@ -328,7 +325,22 @@ let patientSchema = new Schema({
             trim: true
         }
     },
+    //19-12-22
     karkinos: {
+        boolean: {
+            type: Boolean,
+            require: true,
+        },
+        organ: {
+            type: String,
+            trim: true
+        },
+        treatment: {
+            type: String,
+            trim: true
+        }
+    },
+    kardia:{
         boolean: {
             type: Boolean,
             require: true,
@@ -338,6 +350,48 @@ let patientSchema = new Schema({
             trim: true
         }
     },
+    apeikonistiko :{
+        boolean: {
+            type: Boolean,
+            require: true,
+        },
+        which:{
+            type: String,
+            trim: true
+        },
+        when: Date,
+        medicalΟpinion:{
+            type: String,
+            trim: true
+        },
+
+    },
+    dermatopatheia:{
+        boolean: {
+            type: Boolean,
+            require: true,
+        },
+        text: {
+            type: String,
+            trim: true
+        }
+    },
+    osteosinthesi: {
+        boolean: {
+            type: Boolean,
+            require: true,
+        },
+        text: {
+            type: String,
+            trim: true
+        }
+    },
+     anapnefstiko: { 
+        type: Boolean,
+        require: true,
+    },
+
+     //19-12-22
     eminopafsi: {
         type: Boolean,
 

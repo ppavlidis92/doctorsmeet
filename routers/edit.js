@@ -425,8 +425,7 @@ router.post("/editPatient/:id", verifyToken, async (req, res) => {
     streetName,
     streetNumber,
     streetZip,
-    karkinos,
-    karkinosText,
+  
     mobile_number,
     identification,
     AsfalistikoTameio,
@@ -455,7 +454,8 @@ router.post("/editPatient/:id", verifyToken, async (req, res) => {
     alergiaText,
 
     traumatismoi,
-    osteosinthesi,
+    osteosinthesiBoolean,
+    osteosinthesiText,
 
     gunaikologikaProblimataText,
 
@@ -472,7 +472,10 @@ router.post("/editPatient/:id", verifyToken, async (req, res) => {
     alloText,
     covidText,
     DateOfBirth,
-
+    dermatopatheiaBoolean, dermatopatheiaText,
+    apeikonistikoBoolean,apeikonistikoWhich,apeikonistikoWhen,apeikonistikoMedicalOpinion,
+    karkinosBoolean,karkinosOrgan, karkinosTreatment
+    ,kardiaBoolean, kardiaText
   } = req.body;
 
   let Address = {
@@ -504,10 +507,6 @@ console.log(muoskeletiko)
   annarotikiObj = patientHelper.returnParamsObj(annarotikiObj, annarotiki, annarotikiTextInput)
 
 
-
-  //karkinos
-  let karkinosObj = {}
-  karkinosObj = patientHelper.returnParamsObj(karkinosObj, karkinos, karkinosText)
 
   //therapia
   let therapiaObj = {}
@@ -571,8 +570,37 @@ console.log(muoskeletiko)
   let age_group = patientHelper.GetAgeGroup(age)
 
 
+ 
+   //apeikonistiko
+   let apeikonistiko ={}
+   apeikonistiko.boolean= apeikonistikoBoolean
+   apeikonistiko.which= apeikonistikoWhich
+   apeikonistiko.when= apeikonistikoWhen
+   apeikonistiko.medicalΟpinion= apeikonistikoMedicalOpinion
+ 
+ 
 
 
+  //osteosinthesi
+  let osteosinthesi={}
+  osteosinthesi =  patientHelper.returnParamsObj(osteosinthesi, osteosinthesiBoolean, osteosinthesiText)
+
+ //karkinos
+ let karkinos ={}
+ karkinos.boolean= karkinosBoolean
+ karkinos.organ= karkinosOrgan
+ karkinos.treatment= karkinosTreatment
+
+
+ let kardia={}
+ kardia =  patientHelper.returnParamsObj(kardia, kardiaBoolean, kardiaText)
+ 
+
+    //dermatopatheia
+    let dermatopatheia={}
+    dermatopatheia =  patientHelper.returnParamsObj(dermatopatheia, dermatopatheiaBoolean, dermatopatheiaText)
+    
+console.log(dermatopatheia);
   Patient.findByIdAndUpdate(
     {
       _id: req.params.id,
@@ -582,18 +610,21 @@ console.log(muoskeletiko)
       email: email.toLowerCase(), age,
       Address, UserAmka,
       DateOfBirth, doctor,
+      dermatopatheia,
       annarotiki: annarotikiObj,
       alergia: alergiaObj,
       army: armyObj,
+      kardia,
       history: historyObj,
       therapia: therapiaObj,
-      karkinos: karkinosObj,
+      karkinos,
       anaimia: anaimiaObj,
       gunaikologikaProblimata: gunaikologikaProblimataObj,
       farmaka: farmakaObj,
       allo: alloObj,
       covid: covidObj,
       eminopafsi,
+      apeikonistiko,
       identification, muoskeletiko,
       AsfalistikoTameio, smoker, alcohol,
       eyesEarsDiscomfort, illggous, gastrenteriko,

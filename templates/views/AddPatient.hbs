@@ -94,29 +94,29 @@
                   <div class="col-md-4">
                     <label class="form-label" for="validationDefaultEmail">Email</label>
                     <div class="input-group"><span class="input-group-text" id="inputGroupPrepend2">@</span>
-                      <input class="form-control" name="email" type="email" placeholder="email@email.gr">
+                      <input class="form-control" name="email" type="email" placeholder="">
                     </div>
                   </div>
 
                   <div class="col-md-4">
                     <label class="form-label" for="validationMobile">Κινητό</label>
-                    <input class="form-control" name="mobile_number" type="number"  required="">
+                    <input class="form-control" name="mobile_number" type="number" required="">
                   </div>
 
                   <div class="col-md-4">
                     <label class="form-label" for="validationMobile">Σταθερό</label>
-                    <input class="form-control" name="home_number" type="number"  required="">
+                    <input class="form-control" name="home_number" type="number" required="">
                   </div>
 
 
                   <div class="col-md-4 mt-5">
                     <p>Φύλο</p>
-                              <label>
-                                <input type="checkbox" class="radio historyCheckd" value="man" name="gender"
-                                  id="historyCheckd" />'Αντρας</label>
-                              <label>
-                                <input type="checkbox" class="radio historyCheckd" value="woman" name="gender"
-                                  id="historyCheckd" value="false" />Γυναίκα</label>
+                    <label>
+                      <input type="checkbox" class="radio historyCheckd" value="man" name="gender"
+                        id="historyCheckd" />'Αντρας</label>
+                    <label>
+                      <input type="checkbox" class="radio historyCheckd" value="woman" name="gender" id="historyCheckd"
+                        value="false" />Γυναίκα</label>
                   </div>
 
                 </div>
@@ -163,7 +163,7 @@
 
 
                       <tr class="align-middle">
-                        <th scope="row">Μητερα</th>
+                        <th scope="row">Μητέρα</th>
                         <td><input class="form-control" type="number" id="motherAge" name="motherAge"></td>
                         <td><input class="form-control" type="text" id="motherHealth" name="motherHealth"></td>
                         <td><input class="form-control" type="number" id="motherAgeDeath" name="motherAgeDeath"></td>
@@ -190,7 +190,7 @@
                       </tr>
 
                       <tr class="align-middle">
-                        <th scope="row">Συζυγος</th>
+                        <th scope="row">Σύζυγος</th>
                         <td><input class="form-control" type="number" id="wifeAge" name="wifeAge"></td>
                         <td><input class="form-control" type="text" id="wifeHealth" name="wifeHealth"></td>
                         <td><input class="form-control" type="number" id="wifeAgeDeath" name="wifeAgeDeath"></td>
@@ -221,7 +221,8 @@
 
                   <tbody>
 
-<p><b>Παρακαλώ συμπληρώστε τα επιπλέον πεδία που εμφανίζονται κατά την επιλογή καταφατικών απαντήσεων</b></p>
+                    <p><b>Παρακαλώ συμπληρώστε τα επιπλέον πεδία που εμφανίζονται κατά την επιλογή καταφατικών
+                        απαντήσεων</b></p>
 
                     <tr class="align-middle">
                       <td class="col-sm-4">
@@ -250,7 +251,7 @@
 
                     <tr class="align-middle">
                       <td class="col-sm-4">
-                        <p>Κάνετε χρήση οινοπνευματικών ποτών; </p>
+                        <p>Κάνετε χρήση οινοπνευματοδών ποτών; </p>
 
 
                       </td>
@@ -380,7 +381,11 @@
                         </div>
                       </td>
                     </tr>
-                    <tr> <td align="left" colspan="100%"><p><b>Είχατε ποτέ πάθηση ή ενοχλήσεις στα παρακάτω:</b></p></td></tr>                     
+                    <tr>
+                      <td align="left" colspan="100%">
+                        <p><b>Είχατε ποτέ πάθηση ή ενοχλήσεις στα παρακάτω:</b></p>
+                      </td>
+                    </tr>
                     <tr class="align-middle">
                       <td>
                         <p>Αυτιά ή μάτια;
@@ -460,9 +465,7 @@
                     <tr class="align-middle">
                       <td>
                         <p>Αναπνευστικό σύστημα (πνευμονία, πλευρίτιδα, έμμονη
-                          φαρυγγίτιδα, λαριγγίτιδα, αμυγδα- λίτιδα κ.λ.π.);
-
-
+                          φαρυγγίτιδα, λαριγγίτιδα, αμυγδαλίτιδα, χρόνια αποφρακτική πνευμονοπάθεια (ΧΑΠ) );
                         </p>
                       </td>
                       <td class="col-sm-4">
@@ -486,9 +489,7 @@
 
                     <tr class="align-middle">
                       <td>
-                        <p>Κυκλοφορικό σύστημα (υπέρταση, υπόταση, καρδιοπάθεια,
-                          αρτηριακή ή φλεβική κυκλοφο- ρία κάτω άκρων αιμοφόρα αγγεία κ.λ.π.);
-
+                        <p>Κυκλοφορικό σύστημα (αγγειοπάθεια, φλεβίτιδα, φλεβική ανεπάρκεια);
                         </p>
                       </td>
                       <td class="col-sm-4">
@@ -514,7 +515,7 @@
                     <tr class="align-middle">
                       <td>
                         <p>Ουροποιητικό σύστημα ή γεννητικό σύστημα (νεφροπάθεια,
-                          νεφρολιθίαση, προστάτη, αφρο- δίσια νοσήματα κ.λ.π.);
+                          νεφρολιθίαση, προστάτη, αφροδίσια νοσήματα κ.λ.π.);
 
 
                         </p>
@@ -566,7 +567,11 @@
                         </div>
                       </td>
                     </tr>
-                    <tr> <td align="left" colspan="100%"><p><b>Σε περίπτωση καταφατικής απάντησης, παρακαλώ διευκρινίστε λεπτομερώς τα παρακάτω:</b></p></td></tr>  
+                    <tr>
+                      <td align="left" colspan="100%">
+                        <p><b>Σε περίπτωση καταφατικής απάντησης, παρακαλώ διευκρινίστε λεπτομερώς τα παρακάτω:</b></p>
+                      </td>
+                    </tr>
                     <tr class="align-middle">
                       <td>
                         <p>Είχατε ποτέ πρόβλημα αναιμίας;
@@ -736,7 +741,7 @@
 
                     <tr class="align-middle">
                       <td>
-                        <p>Yπάρχουν υλικά οστεοσύνθεσης
+                        <p>Yπάρχουν υλικά οστεοσύνθεσης;
 
 
 
@@ -749,13 +754,27 @@
                             <div>
 
                               <label>
-                                <input type="checkbox" class="radio" value="true" name="osteosinthesi"
+                                <input type="checkbox" class="radio osteosinthesi" value="true" name="osteosinthesiBoolean"
                                   id="osteosinthesi" />Ναι</label>
                               <label>
-                                <input type="checkbox" class="radio" value="false" name="osteosinthesi"
+                                <input type="checkbox" class="radio osteosinthesi" value="false" name="osteosinthesiBoolean"
                                   id="osteosinthesi" value="false" />Οχι</label>
 
                             </div>
+
+
+                           <div id="osteosinthesiText" style="display:none;">
+                              <hr>
+                              <div>
+                                <p>Εξηγείστε.</p>
+
+                                <input type="text" class="form-control" name="osteosinthesiText">
+                              </div>
+
+                           
+
+                            </div>
+                            
 
                           </div>
                         </div>
@@ -953,16 +972,16 @@
                       <td class="col-sm-4">
                         <div class="col-12">
                           <div class="form-check">
-                             <div>
+                            <div>
 
-                                <label>
-                                  <input type="checkbox" class="radio" value="true" name="eminopafsi"
-                                    id="eminopafsi" />Ναι</label>
-                                <label>
-                                  <input type="checkbox" class="radio" value="false" name="eminopafsi" id="eminopafsi"
-                                    value="false" />Οχι</label>
+                              <label>
+                                <input type="checkbox" class="radio" value="true" name="eminopafsi"
+                                  id="eminopafsi" />Ναι</label>
+                              <label>
+                                <input type="checkbox" class="radio" value="false" name="eminopafsi" id="eminopafsi"
+                                  value="false" />Οχι</label>
 
-                              </div>
+                            </div>
 
                           </div>
                         </div>
@@ -971,10 +990,7 @@
 
                     <tr class="align-middle">
                       <td>
-                        <p>Ασθενήσατε ποτέ από κάποια κακοήθεια; Εάν ναι, σε ποια θεραπεία υποβληθήκατε;
-
-
-
+                        <p>Ασθενήσατε ποτέ από κάποια κακοήθεια (καρκίνος); Εάν ναι, σε ποια θεραπεία υποβληθήκατε;
                         </p>
                       </td>
                       <td class="col-sm-4">
@@ -983,31 +999,125 @@
                             <div>
 
                               <label>
-                                <input type="checkbox" class="radio karkinos" value="true" name="karkinos"
+                                <input type="checkbox" class="radio karkinos" value="true" name="karkinosBoolean"
                                   id="karkinos" />Ναι</label>
                               <label>
-                                <input type="checkbox" class="radio karkinos" value="false" name="karkinos" id="karkinos"
-                                  value="false" />Οχι</label>
+                                <input type="checkbox" class="radio karkinos" value="false" name="karkinosBoolean"
+                                  id="karkinos" value="false" />Οχι</label>
 
                             </div>
 
-                            <div id="karkinosText" style="display:none;">
+                                  <table class="table border mb-0" id="karkinosText" style="display:none;">
+                                    <tr>
+                                      <th>Όργανο</th>
+                                      <th>Θεραπεία</th>
+                                    </tr>
+                                    <tbody id="karkinostableBody">
+
+                                      <tr id="1">
+                                        <td> <input class="form-control" type="text" name="karkinosOrgan" id="karkinosOrgan"></td>
+                                        <td> <input class="form-control" type="text" name="karkinosTreatment" id="karkinosTreatment"></td>
+                                      </tr>
+                                    </tbody>
+
+                                  </table>
+
+
+                            {{!-- <div id="karkinosText" style="display:none;">
                               <hr>
-                              <p>Αναφέρατε.</p>
+                              <div>
+                                <p>Όργανο.</p>
 
-                              <textarea class="form-control" name="karkinosText" cols="30" rows="10"></textarea>
+                                <input type="text" class="form-control" name="karkinosOrgan">
+                              </div>
 
+                              <div class="mt-3">
+                                <p>Θεραπεία.</p>
 
-                            </div>
-                            </div>
+                                <input type="text" class="form-control" name="karkinosTreatment">
+
+                              </div>
+                            </div> --}}
+
+                          </div>
                         </div>
                       </td>
                     </tr>
 
                     <tr class="align-middle">
                       <td>
-                        <p>Έχετε υποβληθεί σε Check-up ή επί μέρους εξετάσεις ελέγχου το τελευταίο εξάμηνο;
-                          Εάν ναι, σε ποιές, πότε, και το αποτέλεσμα αυτών
+                        <p>Καρδιά (υπέρταση, υπόταση, καρδιοπάθεια, στεφανιαία νόσος, έμφραγμα, αρρυθμίες) ;
+                        </p>
+                      </td>
+                      <td class="col-sm-4">
+                        <div class="col-12">
+                          <div class="form-check">
+                            <div>
+
+                              <label>
+                                <input type="checkbox" class="radio kardia" value="true" name="kardiaBoolean"
+                                  id="kardia" />Ναι</label>
+                              <label>
+                                <input type="checkbox" class="radio kardia" value="false" name="kardiaBoolean"
+                                  id="kardia" value="false" />Οχι</label>
+
+                            </div>
+
+                            <div id="kardiaText" style="display:none;">
+                              <hr>
+                              <div>
+                                <p>Εξηγείστε.</p>
+
+                                <input type="text" class="form-control" name="kardiaText">
+                              </div>
+
+
+
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+
+                     <tr class="align-middle">
+                      <td>
+                        <p> Πάσχετε από κάποια δερματοπάθεια;
+                        </p>
+                      </td>
+                      <td class="col-sm-4">
+                        <div class="col-12">
+                          <div class="form-check">
+                            <div>
+
+                              <label>
+                                <input type="checkbox" class="radio dermatopatheia" value="true" name="dermatopatheiaBoolean"
+                                  id="dermatopatheia" />Ναι</label>
+                              <label>
+                                <input type="checkbox" class="radio dermatopatheia" value="false" name="dermatopatheiaBoolean"
+                                  id="dermatopatheia" value="false" />Οχι</label>
+
+                            </div>
+
+                            <div id="dermatopatheiaText" style="display:none;">
+                              <hr>
+                              <div>
+                                <p>Εξηγείστε.</p>
+
+                                <input type="text" class="form-control" name="dermatopatheiaText">
+                              </div>
+
+
+
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <tr class="align-middle">
+                      <td>
+                        <p>Έχετε υποβληθεί σε εξετάσεις ελέγχου το τελευταίο εξάμηνο (Check-up);
+                          Εάν ναι, σε ποιές, πότε, και ποιο το αποτέλεσμα αυτών;
                         </p>
                       </td>
                       <td class="col-sm-4">
@@ -1029,9 +1139,9 @@
                               <div class="table-responsive" style="display:none;" id="checkupText">
                                 <table class="table border mb-0" id="checkupTable">
                                   <tr>
-                                    <th>Ποιές;</th>
-                                    <th>Που;</th>
-                                    <th>Πότε;</th>
+                                    <th>Είδος και περιοχή εξέτασης</th>
+                                    <th>Αποτέλεσμα</th>
+                                    <th>Ημερομηνία εξέτασης</th>
                                   </tr>
                                   <tbody id="checkupTableBody">
 
@@ -1143,7 +1253,7 @@
 
                     <tr class="align-middle">
                       <td>
-                        <p>Ασθενήσατε από λοιμώδες νόσημα; (covid,γρίπη)
+                        <p>Ασθενήσατε από λοιμώδες νόσημα; (covid,γρίπη και λοιπά)
                         </p>
                       </td>
                       <td class="col-sm-4">
@@ -1164,18 +1274,63 @@
                               <hr>
                               <p>Αναφέρατε.</p>
 
-                              <textarea class="form-control" name="covidText" cols="30" rows="10"></textarea>
+                              <textarea class="form-control" name="covidText" cols="30" rows="5"></textarea>
 
 
                             </div>
-                            </div>
-
                           </div>
+
+                        </div>
                       </td>
                     </tr>
 
 
-                                        <tr class="align-middle">
+                <tr class="align-middle">
+                      <td>
+                        <p>Έχετε υποβληθεί σε εξέταση απεικονιστικού ελέγχου το τελευταίο εξάμηνο; (μαγνιτική, αξονική, ακτινογραφία κτλπ)
+		  αν ναι, σε ποιές; πότε; και ποιες οι ιατρικές γνωματέυσεις αυτών; 
+                        </p>
+                      </td>
+                      <td class="col-sm-4">
+                        <div class="col-12">
+                          <div class="form-check">
+                            <div>
+
+                              <label>
+                                <input type="checkbox" class="radio apeikonistiko" value="true" name="apeikonistikoBoolean"
+                                  id="apeikonistiko" />Ναι</label>
+                              <label>
+                                <input type="checkbox" class="radio apeikonistiko" value="false" name="apeikonistikoBoolean" id="apeikonistiko"
+                                  value="false" />Οχι</label>
+
+                            </div>
+
+                            <div id="apeikonistikoText" style="display:none;">
+                              <hr>
+                             
+                                <div>
+                                  <p>Ποιές;</p>
+                                   <input class="form-control" name="apeikonistikoWhich" type="text">
+                                </div>
+                                
+                                 <div class="mt-3">
+                                  <p>Πότε;</p>
+                                   <input class="form-control" name="apeikonistikoWhen" type="date">
+                                </div>
+
+                                 <div class="mt-3">
+                                  <p>Ποιες οι ιατρικές γνωματέυσεις αυτών;</p>
+                                   <input class="form-control" name="apeikonistikoMedicalΟpinion" type="text">
+                                </div>
+
+                            </div>
+                          </div>
+
+                        </div>
+                      </td>
+                    </tr>
+
+                    <tr class="align-middle">
                       <td>
                         <p>Έχετε να δηλώσετε οτιδήποτε άλλο που έχει σχέση με την υγεία σας;
                         </p>
@@ -1225,7 +1380,8 @@
                   <div class="form-check">
                     <input class="form-check-input" id="isMinor" type="checkbox" required="">
                     <label class="form-check-label" for="invalidCheck2">
-                      Δηλώνω ότι οι ανωτέρω απαντήσεις είναι αληθείς και συναινώ στην αποθήκευση και χρήση τους από τον προσωπικό μου ιατρό.  </label>
+                      Δηλώνω ότι οι ανωτέρω απαντήσεις είναι αληθείς και συναινώ στην αποθήκευση και χρήση τους από τον
+                      προσωπικό μου ιατρό. </label>
                   </div>
                 </div>
 
@@ -1275,7 +1431,7 @@
                       <td>
                         <div class="input-group">
                           <input class="form-control" id="validationDefaultEmail" type="text"
-                          name="AddUserWithMailSubject" required="">
+                            name="AddUserWithMailSubject" required="">
                         </div>
                       </td>
                     </tr>
@@ -1283,7 +1439,7 @@
                 </div>
 
 
-              
+
 
 
                 <div class="col-12 mt-5">
