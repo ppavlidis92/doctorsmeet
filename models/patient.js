@@ -404,7 +404,10 @@ let patientSchema = new Schema({
         type: Boolean
     },
     ekthesiIatrou: {
-
+        
+        blabhMuoskeletiko: {
+            type: String
+        },
         gnorizeteAstheni: {
             type: String
         },

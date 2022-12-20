@@ -236,6 +236,7 @@ router.post("/submitPatient/:id", verifyToken, async (req, res) => {
     sustolikiA,
     diastolikiA,
     sustolikiB,
+    blabhMuoskeletiko,
     diastolikiB,
     akroasiKardias,
     kardiakiOsi,
@@ -287,6 +288,9 @@ router.post("/submitPatient/:id", verifyToken, async (req, res) => {
   ekthesiIatrou.sfikseis = sfikseis
   ekthesiIatrou.sfikseisRithmos = sfikseisRithmos
   ekthesiIatrou.sustolikiA = sustolikiA
+
+  //
+  ekthesiIatrou.blabhMuoskeletiko = blabhMuoskeletiko
 
   ekthesiIatrou.diastolikiA = diastolikiA
   ekthesiIatrou.sustolikiB = sustolikiB
