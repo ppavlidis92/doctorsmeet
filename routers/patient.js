@@ -674,7 +674,7 @@ router.post("/SendPatientEmailForm", verifyToken, async (req, res) => {
     );
 
     var mailOptions = {
-      from: 'iatriovoudouris@iatriovoudouris.gr',
+      from: 'iatriovoudouris@info',
       to: newUserEmail,
       subject: Subject,
       text: Text
