@@ -653,13 +653,14 @@ router.post("/SendPatientEmailForm", verifyToken, async (req, res) => {
     _id: new mongoose.Types.ObjectId(),
     UrlId: uuid,
     doctor,
-    isCompleted: false
+    isCompleted: false,
+    PatientEmail:req.body.AddUserWithMail
   })
 
 
   await email.save().then((result) => {
 
-
+console.log(result)
     var transporter = nodemailer.createTransport({
       host: mailHost,
       port: 465,

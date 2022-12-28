@@ -14,6 +14,12 @@ let emailSchema = new Schema({
     type: Boolean,
     required: true,
   },
+  PatientEmail:{
+     type: String,
+    require: true,
+    trim: true,
+ 
+  }
 
 });
 
