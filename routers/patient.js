@@ -529,7 +529,7 @@ router.post("/AddEmailPatient", async (req, res) => {
   const patient = new Patient({
     _id: new mongoose.Types.ObjectId(),
     fname, lname, age_group,
-    // email: email.toLowerCase(), age,
+    email: email.toLowerCase(), age,
     Address, start_date, UserAmka,
     DateOfBirth, doctor,
     annarotiki: annarotikiObj,
