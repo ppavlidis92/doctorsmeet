@@ -636,7 +636,7 @@ router.post("/SendPatientEmailForm", verifyToken, async (req, res) => {
   const Subject = req.body.AddUserWithMailSubject
 
 
-  let doctorFullName = await getDoctorFullName(req)
+  // let doctorFullName = await getDoctorFullName(req)
   let doctorAmka = getDoctor(req);
   let doctor = {}
   doctor.amka = doctorAmka

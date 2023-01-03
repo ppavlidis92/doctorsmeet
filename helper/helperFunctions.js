@@ -83,8 +83,17 @@ const User =_db.model('User',usersSchema,'user')
     decodedUser = jwt.verify(token, process.env.JWT_KEY)
     if (decodedUser) {
       amka = decodedUser.doctor;
-      let doctor = await User.find({ UserAmka: amka }).lean()
+      try{
+      let doctor = await User.find({ UserAmka: amka }).lean()}
+
+  catch (error) {
+    console.log(error);
+  }
+
       doctorName = doctor[0].lname + ' ' + doctor[0].fname
+      console.log("edw ektupwnw")
+      console.log(doctor)
+      console.log(typeof doctor)
     }
 
   }
